@@ -17,7 +17,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}
+DefaultDirName={userappdata}\Autodesk\Revit\Addins\2019\{#MyAppName}
 DefaultGroupName={#MyAppName}
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
@@ -32,7 +32,7 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\"; Flags: ignoreversion
+Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\"; Flags: ignoreversion
 Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\BimIshou.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\BimIshou.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\CommunityToolkit.Mvvm.dll"; DestDir: "{app}"; Flags: ignoreversion

@@ -35,7 +35,7 @@ namespace BimIshou.Commands
             foreach (Element element in collector)
             {
                 // Chọn loại tag
-                FilteredElementCollector tagIds = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_SiteTags).WhereElementIsNotElementType();
+                FilteredElementCollector tagIds = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_SiteTags).WhereElementIsNotElementType();
                 
                 ICollection<Element> siteTag = new List<Element>();
 

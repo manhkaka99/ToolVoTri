@@ -26,11 +26,11 @@ namespace BimIshou.Commands
             CheckTag checkTag = new CheckTag();
             CheckTag2 checkTag2 = new CheckTag2();
 
-            FilteredElementCollector doors = new FilteredElementCollector(doc)
+            FilteredElementCollector doors = new FilteredElementCollector(doc, doc.ActiveView.Id)
                 .OfCategory(BuiltInCategory.OST_Doors)
                 .WhereElementIsNotElementType();
 
-            FilteredElementCollector windows = new FilteredElementCollector(doc)
+            FilteredElementCollector windows = new FilteredElementCollector(doc, doc.ActiveView.Id)
                 .OfCategory(BuiltInCategory.OST_Windows)
                 .WhereElementIsNotElementType();
 
@@ -44,7 +44,7 @@ namespace BimIshou.Commands
             foreach (Element ele in doors)
             {
                 FamilySymbol doorFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
-                string a = doorFamily.LookupParameter("建具 法").AsString();
+                string a = doorFamily.LookupParameter("建具_法").AsString();
                 if (a != null & a != "" & a != "-")
                 {
                     doorAll1.Add(ele);
@@ -61,7 +61,7 @@ namespace BimIshou.Commands
             foreach (Element ele in windows)
             {
                 FamilySymbol windowFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
-                string a = windowFamily.LookupParameter("建具 法").AsString();
+                string a = windowFamily.LookupParameter("建具_法").AsString();
                 if (a != null & a != "" & a != "-")
                 {
                     windowAll1.Add(ele);
@@ -88,7 +88,7 @@ namespace BimIshou.Commands
             #endregion
 
             #region Lọc tag đã tag 
-            FilteredElementCollector doorTags = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_DoorTags).WhereElementIsNotElementType();
+            FilteredElementCollector doorTags = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_DoorTags).WhereElementIsNotElementType();
             ICollection<Element> doorTag = new List<Element>();
 
             foreach (Element a in doorTags)
@@ -99,7 +99,7 @@ namespace BimIshou.Commands
                 }
             }
 
-            FilteredElementCollector windowTags = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_WindowTags).WhereElementIsNotElementType();
+            FilteredElementCollector windowTags = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_WindowTags).WhereElementIsNotElementType();
             ICollection<Element> windowTag = new List<Element>();
 
             foreach (Element a in windowTags)
