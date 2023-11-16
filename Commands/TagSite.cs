@@ -13,6 +13,8 @@ using System.Reflection;
 using System.Security.Policy;
 using Application = Autodesk.Revit.ApplicationServices.Application;
 using Nice3point.Revit.Toolkit.External;
+using System.Windows.Documents;
+using System.Windows.Controls;
 
 #endregion
 
@@ -30,43 +32,40 @@ namespace BimIshou.Commands
             TagMode tMode = TagMode.TM_ADDBY_CATEGORY;
             TagOrientation tOrien = TagOrientation.Horizontal;
 
+            FilteredElementCollector tagIds = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_SiteTags).WhereElementIsNotElementType();
+
+            ICollection<Element> siteTag = new List<Element>();
+
+            foreach (Element a in tagIds)
+            {
+                if (a.get_Parameter(BuiltInParameter.ELEM_FAMILY_PARAM).AsValueString() == "dタグ_外構_計画と現況レベル")
+                {
+                    siteTag.Add(a);
+                }
+            }
+            FamilySymbol tagId1 = (from tag in new FilteredElementCollector(doc)
+                                        .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_SiteTags)
+                                        .Cast<FamilySymbol>()
+                                   where tag.Name == "計画のみ"
+                                   select tag).First();
+            FamilySymbol tagId2 = (from tag in new FilteredElementCollector(doc)
+                                        .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_SiteTags)
+                                        .Cast<FamilySymbol>()
+                                   where tag.Name == "計画と現況"
+                                   select tag).First();
+
             FilteredElementCollector collector = new FilteredElementCollector(doc)
                 .OfClass(typeof(RevitLinkInstance));
+            
             foreach (Element element in collector)
             {
-                // Chọn loại tag
-                FilteredElementCollector tagIds = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_SiteTags).WhereElementIsNotElementType();
-                
-                ICollection<Element> siteTag = new List<Element>();
-
-                foreach (Element a in tagIds)
-                {
-                    if (a.get_Parameter(BuiltInParameter.ELEM_FAMILY_PARAM).AsValueString() == "dタグ_外構_計画と現況レベル")
-                    {
-                        siteTag.Add(a);
-                    }
-                }
-                FamilySymbol tagId1 = (from tag in new FilteredElementCollector(doc)
-                                            .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_SiteTags)
-                                            .Cast<FamilySymbol>()
-                                       where tag.Name == "計画のみ"
-                                       select tag).First();
-                FamilySymbol tagId2 = (from tag in new FilteredElementCollector(doc)
-                                            .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_SiteTags)
-                                            .Cast<FamilySymbol>()
-                                       where tag.Name == "計画と現況"
-                                       select tag).First();
-
                 RevitLinkInstance instance = element as RevitLinkInstance;
                 Document linkDoc = instance.GetLinkDocument();
                 //RevitLinkType type = doc.GetElement(instance.GetTypeId()) as RevitLinkType;
                 FilteredElementCollector sites = new FilteredElementCollector(linkDoc)
-                    .OfCategory(BuiltInCategory.OST_Site)
-                    .WhereElementIsNotElementType();
+                                   .OfCategory(BuiltInCategory.OST_Site)
+                                   .WhereElementIsNotElementType();
                 IList<Element> list = new List<Element>();
-
-                Checktag checkTag = new Checktag();
-
                 foreach (Element site in sites)
                 {
 
@@ -76,9 +75,8 @@ namespace BimIshou.Commands
                     {
                         list.Add(site);
                     }
-
                 }
-
+                Checktag checkTag = new Checktag();
                 try
                 {
                     using (Transaction trans = new Transaction(doc, "Creat Tag"))
@@ -89,6 +87,7 @@ namespace BimIshou.Commands
 
                             if (checkTag.checkTag(doc, ele, siteTag) == false)
                             {
+
                                 Reference reference = new Reference(ele).CreateLinkReference(instance);
                                 LocationPoint loc = ele.Location as LocationPoint;
                                 XYZ pos = loc.Point;
@@ -118,6 +117,7 @@ namespace BimIshou.Commands
                     return Result.Failed;
                 }
             }
+            
             return Result.Succeeded;
         }
     }
