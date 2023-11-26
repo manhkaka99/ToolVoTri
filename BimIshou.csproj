@@ -59,8 +59,10 @@
       <None Remove="Resources\Icons\AutoTag16.png" />
       <None Remove="Resources\Icons\AutoTag32.png" />
       <None Remove="Resources\Icons\door.png" />
+      <None Remove="Resources\Icons\FloorSite32.png" />
       <None Remove="Resources\Icons\MultiCut16.png" />
       <None Remove="Resources\Icons\MultiCut32.png" />
+      <None Remove="Resources\Icons\TagSite16.png" />
       <None Remove="Resources\Icons\TagSite32.png" />
       <None Remove="Resources\Icons\Tag防32.png" />
       <None Remove="Resources\Icons\TextDim32.png" />
@@ -83,10 +85,12 @@
     <ItemGroup>
         <Resource Include="Resources\Icons\AutoTag16.png" />
         <Resource Include="Resources\Icons\AutoTag32.png" />
+        <Resource Include="Resources\Icons\FloorSite32.png" />
         <Resource Include="Resources\Icons\MultiCut16.png" />
         <Resource Include="Resources\Icons\MultiCut32.png" />
         <Resource Include="Resources\Icons\RibbonIcon16.png" />
         <Resource Include="Resources\Icons\RibbonIcon32.png" />
+        <Resource Include="Resources\Icons\TagSite16.png" />
         <Resource Include="Resources\Icons\TagSite32.png" />
         <Resource Include="Resources\Icons\Tag防32.png" />
         <Resource Include="Resources\Icons\TextDim32.png" />

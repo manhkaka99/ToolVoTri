@@ -44,6 +44,7 @@ namespace BimIshou.Commands
                         list.Add(site);
                     }
                 }
+   
                 foreach (Element site in list)
                 {
                     LocationPoint location = site.Location as LocationPoint;
@@ -58,8 +59,6 @@ namespace BimIshou.Commands
                     }
                 }
             }
-
-
             return Result.Succeeded;
         }
     }

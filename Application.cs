@@ -74,15 +74,26 @@ namespace BimIshou
             #region Tool Vo Tri
             var panel2 = Application.CreatePanel("Tool Vô Tri", "BimIshou");
 
-            var tagSite = panel2.AddPushButton<TagSite>("Tag Level Site");
-            tagSite.ToolTip = "Tag các mốc cao độ từ file link Gaiko!";
+            var tagSite = panel2.AddSplitButton("TagSite", "Tag Level Site");
+            tagSite.ToolTip = "Tag các mốc cao độ!";
             tagSite.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
+            var tagSite1 = tagSite.AddPushButton<TagSite>("Tag Level Gaiko\nTừ file Link" );
+            tagSite1.ToolTip = "Tag các mốc cao độ từ file link Gaiko!";
+            tagSite1.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
+            var tagSite2 = tagSite.AddPushButton<TagSite_Project>("Tag Level Gaiko\nTrong Project");
+            tagSite2.ToolTip = "Tag các mốc cao độ trong Project!";
+            tagSite2.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
             var tagDim = panel2.AddPushButton<TextDim>("Text 有効");
             tagDim.ToolTip = "Text thêm chữ 有効 vào phía trước đoạn Dimension được chọn!";
             tagDim.SetLargeImage("/BimIshou;component/Resources/Icons/TextDim32.png");
             var Tag防 = panel2.AddPushButton<Tag防>("Tag 防");
             Tag防.ToolTip = "Tag các cửa chống cháy.";
             Tag防.SetLargeImage("/BimIshou;component/Resources/Icons/Tag防32.png");
+            var floorSite = panel2.AddPushButton<FloorSite>("FloorSite");
+            floorSite.ToolTip = "Tạo cao độ cho sàn theo các mốc cao độ.";
+            floorSite.SetLargeImage("/BimIshou;component/Resources/Icons/FloorSite32.png");
+
+
 
             #endregion
         }
