@@ -93,7 +93,9 @@ namespace BimIshou
             floorSite.ToolTip = "Tạo cao độ cho sàn theo các mốc cao độ.";
             floorSite.SetLargeImage("/BimIshou;component/Resources/Icons/FloorSite32.png");
 
-
+            var about = panel2.AddPushButton<Aboout>("About");
+            about.ToolTip = "Nếu bạn cảm thấy buồn và mệt mỏi. Hãy ấn vào đây nha.";
+            about.SetLargeImage("/BimIshou;component/Resources/Icons/About32.png");
 
             #endregion
         }

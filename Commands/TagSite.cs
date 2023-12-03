@@ -98,67 +98,63 @@ namespace BimIshou.Commands
                     }
                 }
             }
-            foreach(Element element in list2)
+            Checktag checkTag = new Checktag();
+            CheckTag5 checkTag5 = new CheckTag5();
+            foreach (Element element in collector)
             {
-                TaskDialog.Show("Test", element.Id.ToString());
-            }
-            //Checktag checkTag = new Checktag();
-            //CheckTag5 checkTag5 = new CheckTag5();
-            //foreach (Element element in collector)
-            //{
-            //    RevitLinkInstance instance = element as RevitLinkInstance;
-            //    try
-            //    {
-            //        using (Transaction trans = new Transaction(doc, "Creat Tag"))
-            //        {
-            //            trans.Start();
-            //            foreach (Element ele in list)
-            //            {
-            //                if (checkTag.checkTag(doc, ele, siteTagType) == false)
-            //                {
-            //                    Reference reference = new Reference(ele).CreateLinkReference(instance);
-            //                    LocationPoint loc = ele.Location as LocationPoint;
-            //                    XYZ pos = loc.Point;
-            //                    if (ele.LookupParameter("現況レベル").AsDouble() == 0 || ele.LookupParameter("現況レベル").AsDouble() == null)
-            //                    {
-            //                        IndependentTag tag = IndependentTag.Create(doc, tagId1.Id, doc.ActiveView.Id, reference, true, tOrien, pos);
-            //                        LinkElementId linkId = tag.TaggedElementId;
-            //                        ElementId linkInsancetId = linkId.LinkInstanceId;
-            //                        ElementId linkedElementId = linkId.LinkedElementId;
-            //                    }
-            //                    else
-            //                    {
-            //                        IndependentTag tag = IndependentTag.Create(doc, tagId2.Id, doc.ActiveView.Id, reference, true, tOrien, pos);
-            //                        LinkElementId linkId = tag.TaggedElementId;
-            //                        ElementId linkInsancetId = linkId.LinkInstanceId;
-            //                        ElementId linkedElementId = linkId.LinkedElementId;
-            //                    }
-            //                }
-            //            }
-            //            foreach (Element ele2 in siteTag2)
-            //            {
-            //                if (checkTag5.checkTag(doc, list2, ele2) == false)
-            //                {
-            //                    doc.Delete(ele2.Id);
-            //                }
-            //            }
-            //            //foreach (Element ele3 in siteTag3)
-            //            //{
-            //            //    if (checkTag5.checkTag(doc, list3, ele3) == false)
-            //            //    {
-            //            //        doc.Delete(ele3.Id);
-            //            //    }
-            //            //}
-            //            trans.Commit();
-            //        }
+                RevitLinkInstance instance = element as RevitLinkInstance;
+                try
+                {
+                    using (Transaction trans = new Transaction(doc, "Creat Tag"))
+                    {
+                        trans.Start();
+                        foreach (Element ele in list)
+                        {
+                            if (checkTag.checkTag(doc, ele, siteTagType) == false)
+                            {
+                                Reference reference = new Reference(ele).CreateLinkReference(instance);
+                                LocationPoint loc = ele.Location as LocationPoint;
+                                XYZ pos = loc.Point;
+                                if (ele.LookupParameter("現況レベル").AsDouble() == 0 || ele.LookupParameter("現況レベル").AsDouble() == null)
+                                {
+                                    IndependentTag tag = IndependentTag.Create(doc, tagId1.Id, doc.ActiveView.Id, reference, true, tOrien, pos);
+                                    LinkElementId linkId = tag.TaggedElementId;
+                                    ElementId linkInsancetId = linkId.LinkInstanceId;
+                                    ElementId linkedElementId = linkId.LinkedElementId;
+                                }
+                                else
+                                {
+                                    IndependentTag tag = IndependentTag.Create(doc, tagId2.Id, doc.ActiveView.Id, reference, true, tOrien, pos);
+                                    LinkElementId linkId = tag.TaggedElementId;
+                                    ElementId linkInsancetId = linkId.LinkInstanceId;
+                                    ElementId linkedElementId = linkId.LinkedElementId;
+                                }
+                            }
+                        }
+                        //foreach (Element ele2 in siteTag2)
+                        //{
+                        //    if (checkTag5.checkTag(doc, list2, ele2) == false)
+                        //    {
+                        //        doc.Delete(ele2.Id);
+                        //    }
+                        //}
+                        //foreach (Element ele3 in siteTag3)
+                        //{
+                        //    if (checkTag5.checkTag(doc, list3, ele3) == false)
+                        //    {
+                        //        doc.Delete(ele3.Id);
+                        //    }
+                        //}
+                        trans.Commit();
+                    }
 
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        message = ex.Message;
-            //        return Result.Failed;
-            //    }
-            //}
+                }
+                catch (Exception ex)
+                {
+                    message = ex.Message;
+                    return Result.Failed;
+                }
+            }
             return Result.Succeeded;
         }
     }

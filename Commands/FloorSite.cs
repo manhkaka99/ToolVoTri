@@ -44,19 +44,20 @@ namespace BimIshou.Commands
                         list.Add(site);
                     }
                 }
-   
-                foreach (Element site in list)
+                using (Transaction trans = new Transaction(doc, "Add Point to the Floor."))
                 {
-                    LocationPoint location = site.Location as LocationPoint;
-                    XYZ a = location.Point;
-                    Double point = site.LookupParameter("計画レベル").AsDouble();
-                    XYZ pos = new XYZ(a.X, a.Y, point);
-                    using (Transaction trans = new Transaction(doc, "Add Point to the Floor."))
+                    trans.Start();
+                    foreach (Element site in list)
                     {
-                        trans.Start();
+                        LocationPoint location = site.Location as LocationPoint;
+                        XYZ a = location.Point;
+                        Double point = site.LookupParameter("計画レベル").AsDouble();
+                        XYZ pos = new XYZ(a.X, a.Y, point);
+
                         floor.SlabShapeEditor.DrawPoint(pos);
-                        trans.Commit();
+
                     }
+                    trans.Commit();
                 }
             }
             return Result.Succeeded;
