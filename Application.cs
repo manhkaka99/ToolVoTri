@@ -92,6 +92,9 @@ namespace BimIshou
             var floorSite = panel2.AddPushButton<FloorSite>("FloorSite");
             floorSite.ToolTip = "Tạo cao độ cho sàn theo các mốc cao độ.";
             floorSite.SetLargeImage("/BimIshou;component/Resources/Icons/FloorSite32.png");
+            var overide = panel2.AddPushButton<OverideArea>("OverideArea");
+            overide.ToolTip = "Chỉnh các nét chia Area";
+            overide.SetLargeImage("/BimIshou;component/Resources/Icons/Overide32.png");
 
             var about = panel2.AddPushButton<Aboout>("About");
             about.ToolTip = "Nếu bạn cảm thấy buồn và mệt mỏi. Hãy ấn vào đây nha.";
