@@ -1,6 +1,7 @@
 ﻿#region Namespaces
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using System;
@@ -28,6 +29,28 @@ namespace BimIshou.Commands
             .Cast<LinePatternElement>()
             .FirstOrDefault(pattern => pattern.Name == "3HA01");
 
+            FilteredElementCollector rooms = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_Rooms).WhereElementIsNotElementType();
+            FilteredElementCollector areaBounds = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_AreaSchemeLines).WhereElementIsNotElementType();
+
+            //Reference r = uidoc.Selection.PickObject(ObjectType.Element, locArea, "Chọn đối tượng Area Boundary cần Overide");
+            //Element ele2 = doc.GetElement(r);
+            //Line line = (ele2.Location as LocationCurve).Curve as Line;
+
+            //TaskDialog.Show("Test", line.Origin.ToString());
+
+            foreach (Element ele in rooms)
+            {
+                Room room = ele as Room;
+                BoundingBoxXYZ boundingBox = room.get_BoundingBox(doc.ActiveView);
+                XYZ maxPoint = boundingBox.Max;
+                XYZ minPoint = boundingBox.Min;
+                Outline myOutLn = new Outline(minPoint, maxPoint);
+                BoundingBoxIntersectsFilter boundingBoxFilter = new BoundingBoxIntersectsFilter(myOutLn);
+
+                room.IsPointInRoom(maxPoint);
+
+
+            }
             while (true)
             {
                 try
@@ -60,6 +83,7 @@ namespace BimIshou.Commands
             return Result.Succeeded;
         }
     }
+    
     class LocArea : ISelectionFilter
     {
         bool ISelectionFilter.AllowElement(Element elem)
