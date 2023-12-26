@@ -29,58 +29,37 @@ namespace BimIshou.Commands
             .Cast<LinePatternElement>()
             .FirstOrDefault(pattern => pattern.Name == "3HA01");
 
-            FilteredElementCollector rooms = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_Rooms).WhereElementIsNotElementType();
+            OverrideGraphicSettings overrideGraphicSettings = new OverrideGraphicSettings();
+            overrideGraphicSettings.SetProjectionLinePatternId(linePatternElement.Id);
+            overrideGraphicSettings.SetProjectionLineWeight(3);
+
+            FilteredElementCollector rooms = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Rooms).WhereElementIsNotElementType();
             FilteredElementCollector areaBounds = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_AreaSchemeLines).WhereElementIsNotElementType();
 
-            //Reference r = uidoc.Selection.PickObject(ObjectType.Element, locArea, "Chọn đối tượng Area Boundary cần Overide");
-            //Element ele2 = doc.GetElement(r);
-            //Line line = (ele2.Location as LocationCurve).Curve as Line;
 
-            //TaskDialog.Show("Test", line.Origin.ToString());
 
-            foreach (Element ele in rooms)
+            using (Transaction trans = new Transaction(doc, "Overide Area"))
             {
-                Room room = ele as Room;
-                BoundingBoxXYZ boundingBox = room.get_BoundingBox(doc.ActiveView);
-                XYZ maxPoint = boundingBox.Max;
-                XYZ minPoint = boundingBox.Min;
-                Outline myOutLn = new Outline(minPoint, maxPoint);
-                BoundingBoxIntersectsFilter boundingBoxFilter = new BoundingBoxIntersectsFilter(myOutLn);
+                trans.Start();
 
-                room.IsPointInRoom(maxPoint);
-
-
-            }
-            while (true)
-            {
-                try
+                foreach (Element area in areaBounds)
                 {
 
-
-                    Reference r = uidoc.Selection.PickObject(ObjectType.Element, locArea, "Chọn đối tượng Area Boundary cần Overide");
-
-
-                    ElementId a = doc.GetElement(r).Id;
-
-                    OverrideGraphicSettings overrideGraphicSettings = new OverrideGraphicSettings();
-                    overrideGraphicSettings.SetProjectionLinePatternId(linePatternElement.Id);
-                    overrideGraphicSettings.SetProjectionLineWeight(4);
-                    using (Transaction trans = new Transaction(doc, "Overide Area"))
+                    foreach (Element ele in rooms)
                     {
-                        trans.Start();
-                        doc.ActiveView.SetElementOverrides(a, overrideGraphicSettings);
-                        trans.Commit();
+                        Room room = ele as Room;
+                        Line line = (area.Location as LocationCurve).Curve as Line;
+
+                        if (room.IsPointInRoom(line.Evaluate(0.5, true)) == true)
+                        {
+                            doc.ActiveView.SetElementOverrides(area.Id, overrideGraphicSettings);
+                        }
                     }
                 }
-                catch (Exception ex)
-                {
-                    message = ex.Message;
-                    return Result.Succeeded;
-                }
+                trans.Commit();
             }
-
-
             return Result.Succeeded;
+
         }
     }
     

@@ -133,6 +133,7 @@ namespace BimIshou.Commands
                         }
                         //foreach (Element ele2 in siteTag2)
                         //{
+                            
                         //    if (checkTag5.checkTag(doc, list2, ele2) == false)
                         //    {
                         //        doc.Delete(ele2.Id);
@@ -140,6 +141,7 @@ namespace BimIshou.Commands
                         //}
                         //foreach (Element ele3 in siteTag3)
                         //{
+                        //    ;
                         //    if (checkTag5.checkTag(doc, list3, ele3) == false)
                         //    {
                         //        doc.Delete(ele3.Id);
@@ -180,7 +182,10 @@ namespace BimIshou.Commands
         public bool checkTag(Document doc, IList<Element> element, Element tags)
         {
             IndependentTag tag2 = tags as IndependentTag;
-            ElementId tagId = tag2.GetTaggedReference().LinkedElementId;
+            LinkElementId dele3 = tag2.TaggedElementId;
+            ElementId tagId = dele3.LinkedElementId;
+
+            //ElementId tagId = tag2.GetTaggedReference().LinkedElementId;
             foreach (Element ele in element)
             {
                 if (ele.Id != null && ele.Id == tagId)

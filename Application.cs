@@ -93,7 +93,7 @@ namespace BimIshou
             floorSite.ToolTip = "Tạo cao độ cho sàn theo các mốc cao độ.";
             floorSite.SetLargeImage("/BimIshou;component/Resources/Icons/FloorSite32.png");
             var overide = panel2.AddPushButton<OverideArea>("OverideArea");
-            overide.ToolTip = "Chỉnh các nét chia Area";
+            overide.ToolTip = "Chỉnh các nét chia Area thành nét 3HA01 - 3";
             overide.SetLargeImage("/BimIshou;component/Resources/Icons/Overide32.png");
 
             var about = panel2.AddPushButton<Aboout>("About");
