@@ -56,21 +56,33 @@
         <StartArguments>/language ENG</StartArguments>
     </PropertyGroup>
     <ItemGroup>
+      <None Remove="Resources\Icons\About16.png" />
       <None Remove="Resources\Icons\About32.png" />
       <None Remove="Resources\Icons\AutoTag16.png" />
       <None Remove="Resources\Icons\AutoTag32.png" />
       <None Remove="Resources\Icons\door.png" />
+      <None Remove="Resources\Icons\DuplicateSheetCMD16.png" />
+      <None Remove="Resources\Icons\DuplicateSheetCMD32.png" />
+      <None Remove="Resources\Icons\FloorSite16.png" />
       <None Remove="Resources\Icons\FloorSite32.png" />
       <None Remove="Resources\Icons\MultiCut16.png" />
       <None Remove="Resources\Icons\MultiCut32.png" />
+      <None Remove="Resources\Icons\MultiCutCMD16.png" />
+      <None Remove="Resources\Icons\MultiCutCMD32.png" />
+      <None Remove="Resources\Icons\Overide16.png" />
       <None Remove="Resources\Icons\Overide32.png" />
+      <None Remove="Resources\Icons\Tagroom16.png" />
+      <None Remove="Resources\Icons\Tagroom32.png" />
       <None Remove="Resources\Icons\TagSite16.png" />
       <None Remove="Resources\Icons\TagSite32.png" />
+      <None Remove="Resources\Icons\Tag防16.png" />
       <None Remove="Resources\Icons\Tag防32.png" />
+      <None Remove="Resources\Icons\TextDim16.png" />
       <None Remove="Resources\Icons\TextDim32.png" />
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="MahApps.Metro" Version="2.4.10" />
         <PackageReference Include="Nice3point.Revit.Toolkit" Version="$(RevitVersion).*" />
         <PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*" />
         <PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*-*" />
@@ -85,18 +97,25 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Resource Include="Resources\Icons\About16.png" />
         <Resource Include="Resources\Icons\About32.png" />
-        <Resource Include="Resources\Icons\AutoTag16.png" />
-        <Resource Include="Resources\Icons\AutoTag32.png" />
+        <Resource Include="Resources\Icons\DuplicateSheetCMD16.png" />
+        <Resource Include="Resources\Icons\DuplicateSheetCMD32.png" />
+        <Resource Include="Resources\Icons\FloorSite16.png" />
         <Resource Include="Resources\Icons\FloorSite32.png" />
-        <Resource Include="Resources\Icons\MultiCut16.png" />
-        <Resource Include="Resources\Icons\MultiCut32.png" />
+        <Resource Include="Resources\Icons\MultiCutCMD16.png" />
+        <Resource Include="Resources\Icons\MultiCutCMD32.png" />
+        <Resource Include="Resources\Icons\Overide16.png" />
         <Resource Include="Resources\Icons\Overide32.png" />
         <Resource Include="Resources\Icons\RibbonIcon16.png" />
         <Resource Include="Resources\Icons\RibbonIcon32.png" />
+        <Resource Include="Resources\Icons\Tagroom16.png" />
+        <Resource Include="Resources\Icons\Tagroom32.png" />
         <Resource Include="Resources\Icons\TagSite16.png" />
         <Resource Include="Resources\Icons\TagSite32.png" />
+        <Resource Include="Resources\Icons\Tag防16.png" />
         <Resource Include="Resources\Icons\Tag防32.png" />
+        <Resource Include="Resources\Icons\TextDim16.png" />
         <Resource Include="Resources\Icons\TextDim32.png" />
     </ItemGroup>
 

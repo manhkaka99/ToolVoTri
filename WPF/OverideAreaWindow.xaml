@@ -1,0 +1,87 @@
+﻿<mah:MetroWindow x:Class="BimIshou.WPF.OverideAreaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:BimIshou.WPF"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        
+        mc:Ignorable="d"
+        Title="OverideArea" 
+        ResizeMode="CanResize"
+        ShowInTaskbar="True" 
+        WindowStartupLocation="CenterScreen"
+        Height="179" Width="348" 
+        Topmost="True">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Pink.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <DockPanel x:Name="MainPanel" 
+                LastChildFill="True">
+
+        <DockPanel DockPanel.Dock="Bottom">
+            <Button DockPanel.Dock="Right"
+                    VerticalAlignment="Bottom"
+                    Content="CANCEL"
+                    Background="Pink"
+                    Width="100"
+                    Click="btnCancel_Click"
+                    IsCancel="True" />
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Content="OK"
+                    Background="Pink"
+                    Width="100"
+                    IsDefault="True"
+                    Click="btnOk_Click" />
+        </DockPanel>
+
+        <Grid DockPanel.Dock="Top"
+              VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition 
+                    Width="100"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text ="Pattern"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+            />
+            <ComboBox
+            Grid.Column="1" Grid.Row="0"
+            VerticalAlignment="Top"
+                x:Name="AllPattern"
+                Opacity="100"
+                DisplayMemberPath="Name" 
+            />
+            <TextBlock Text ="LineWeight"
+                       Grid.Row="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+            />
+            <ComboBox
+                Grid.Column="1" Grid.Row="1"
+                VerticalAlignment="Top"
+                x:Name="AllLineWeight" 
+            />
+        </Grid>
+
+    </DockPanel>
+</mah:MetroWindow>
