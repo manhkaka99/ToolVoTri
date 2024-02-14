@@ -1,28 +1,27 @@
-﻿
-#region Namespaces
-
+﻿#region Namespaces
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using BimIshou.Utils;
+using BimIshou.WPF;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using MahApps.Metro.Controls;
 using System.Reflection;
-using System.Security.Policy;
-using Application = Autodesk.Revit.ApplicationServices.Application;
-using Nice3point.Revit.Toolkit.External;
-using System.Windows.Documents;
 using System.Windows.Controls;
-using System.Windows.Markup;
-
+using Grid = Autodesk.Revit.DB.Grid;
 #endregion
 
-namespace BimIshou.Commands
+namespace BimIshou.ShowGrid
 {
-    [TransactionAttribute(TransactionMode.Manual)]
-    public class Aboout : IExternalCommand
+    [Transaction(TransactionMode.Manual)]
+    public class VisibilityGridLevel : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -30,8 +29,11 @@ namespace BimIshou.Commands
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            TaskDialog.Show("Tiếp thêm năng lượng", "Chúc mọi người một ngày làm việc thật hiệu quả. Em yêu tất cả mọi người! <3");
+            VisibilityGrid window3 = new VisibilityGrid(uidoc);
+            window3.ShowDialog();
+
             return Result.Succeeded;
         }
     }
 }
+

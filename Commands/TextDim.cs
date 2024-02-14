@@ -34,7 +34,6 @@ namespace BimIshou.Commands
             {
                 try
                 {
-
                     Reference r = uidoc.Selection.PickObject(ObjectType.Element, locDim, "Chon doi tuong.");
                     Element element = doc.GetElement(r);
                     XYZ p0 = r.GlobalPoint;

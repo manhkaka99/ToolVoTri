@@ -59,7 +59,7 @@ namespace BimIshou.WPF
             FilteredElementCollector rooms = new FilteredElementCollector(Doc).OfCategory(BuiltInCategory.OST_Rooms).WhereElementIsNotElementType();
             FilteredElementCollector areaBounds = new FilteredElementCollector(Doc, Doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_AreaSchemeLines).WhereElementIsNotElementType();
 
-            using (Transaction trans = new Transaction(Doc, "Overide Area"))
+            using (Transaction trans = new Transaction(Doc, "Override Area"))
             {
                 trans.Start();
 

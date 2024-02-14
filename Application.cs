@@ -3,6 +3,8 @@ using BimIshou.AutoTag;
 using BimIshou.Commands;
 using BimIshou.Commands.DimDoubuchi;
 using BimIshou.DuplicateSheet;
+using BimIshou.PointFloorSite;
+using BimIshou.ShowGrid;
 using Nice3point.Revit.Extensions;
 using Nice3point.Revit.Toolkit.External;
 using System.Reflection;
@@ -105,10 +107,15 @@ namespace BimIshou
             floorSite.SetImage("/BimIshou;component/Resources/Icons/FloorSite16.png");
             floorSite.SetLargeImage("/BimIshou;component/Resources/Icons/FloorSite32.png");
 
-            var overide = panel2.AddPushButton<OverideArea>("OverideArea");
+            var overide = panel2.AddPushButton<OverideArea>("OverrideArea");
             overide.ToolTip = "Chỉnh các nét chia Area.";
             overide.SetImage("/BimIshou;component/Resources/Icons/Overide16.png");
             overide.SetLargeImage("/BimIshou;component/Resources/Icons/Overide32.png");
+
+            var visibilityGridLevel = panel2.AddPushButton<VisibilityGridLevel>("Visibility\nGrid and Level");
+            visibilityGridLevel.ToolTip = "Ẩn hiện bubble của grid và level.";
+            visibilityGridLevel.SetImage("/BimIshou;component/Resources/Icons/VisibilityGridLevel16.png");
+            visibilityGridLevel.SetLargeImage("/BimIshou;component/Resources/Icons/VisibilityGridLevel32.png");
 
             //var about = panel2.AddPushButton<Aboout>("About");
             //about.ToolTip = "Nếu bạn cảm thấy buồn và mệt mỏi. Hãy ấn vào đây nha.";

@@ -79,6 +79,8 @@
       <None Remove="Resources\Icons\Tag防32.png" />
       <None Remove="Resources\Icons\TextDim16.png" />
       <None Remove="Resources\Icons\TextDim32.png" />
+      <None Remove="Resources\Icons\VisibilityGridLevel16.png" />
+      <None Remove="Resources\Icons\VisibilityGridLevel32.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -117,6 +119,8 @@
         <Resource Include="Resources\Icons\Tag防32.png" />
         <Resource Include="Resources\Icons\TextDim16.png" />
         <Resource Include="Resources\Icons\TextDim32.png" />
+        <Resource Include="Resources\Icons\VisibilityGridLevel16.png" />
+        <Resource Include="Resources\Icons\VisibilityGridLevel32.png" />
     </ItemGroup>
 
     <ItemGroup>
