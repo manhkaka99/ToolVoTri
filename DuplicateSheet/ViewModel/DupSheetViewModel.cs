@@ -69,7 +69,7 @@ namespace BimIshou.DuplicateSheet.ViewModel
         {
             this.uidoc = uiApp.ActiveUIDocument;
             this.doc = uiApp.ActiveUIDocument.Document;
-            DupSheetView.lsvDuplicateSheet.ItemsSource = Data.Data.Instance.GetAllViewSheet(doc);
+            DupSheetView.lsvDuplicateSheet.ItemsSource = (Data.Data.Instance.GetAllViewSheet(doc)).OrderBy(sheet => sheet.SheetNumber).ToList();
         }
         #endregion
     }
@@ -159,7 +159,7 @@ namespace BimIshou.DuplicateSheet.ViewModel
             var title_block = GetSheetTitleBlock(vs.Id);
             if (title_block != null)
             {
-                using (Transaction tran = new Transaction(doc, "create sheet"))
+                using (Transaction tran = new Transaction(doc, "Create sheet"))
                 {
                     tran.Start();
                     var new_sheet = ViewSheet.Create(doc, title_block);

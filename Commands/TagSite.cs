@@ -70,6 +70,17 @@ namespace BimIshou.Commands
 
             FilteredElementCollector collector = new FilteredElementCollector(doc)
                 .OfClass(typeof(RevitLinkInstance));
+
+            IList<Element> listLink = new List<Element>();
+
+            foreach (Element check in collector)
+            {
+                if (check.Name.Contains("外構"))
+                {
+                    listLink.Add(check);
+                }
+            }
+                                  
             IList<Element> list = new List<Element>();
             IList<Element> list2 = new List<Element>(); //List cao do 0
             IList<Element> list3 = new List<Element>(); //List cao do khac 0
@@ -105,7 +116,7 @@ namespace BimIshou.Commands
                 RevitLinkInstance instance = element as RevitLinkInstance;
                 try
                 {
-                    using (Transaction trans = new Transaction(doc, "Creat Tag"))
+                    using (Transaction trans = new Transaction(doc, "Creat Tag Site"))
                     {
                         trans.Start();
                         foreach (Element ele in list)

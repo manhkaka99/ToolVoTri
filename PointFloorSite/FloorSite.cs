@@ -24,10 +24,18 @@ namespace BimIshou.PointFloorSite
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
+            try
+            {
+                FloorSiteWPF window = new FloorSiteWPF(uidoc);
+                window.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+                return Result.Failed;
+            }
 
-            FloorSiteWPF window = new FloorSiteWPF(uidoc);
-            window.ShowDialog();
-            
+
             return Result.Succeeded;
         }
     }

@@ -28,10 +28,16 @@ namespace BimIshou.ShowGrid
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
-
-            VisibilityGrid window3 = new VisibilityGrid(uidoc);
-            window3.ShowDialog();
-
+            try
+            {
+                VisibilityGrid window3 = new VisibilityGrid(uidoc);
+                window3.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+                return Result.Failed;
+            }
             return Result.Succeeded;
         }
     }
