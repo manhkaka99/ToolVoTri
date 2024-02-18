@@ -84,7 +84,7 @@ namespace BimIshou.Commands
             IList<Element> list = new List<Element>();
             IList<Element> list2 = new List<Element>(); //List cao do 0
             IList<Element> list3 = new List<Element>(); //List cao do khac 0
-            foreach (Element element in collector)
+            foreach (Element element in listLink)
             {
                 RevitLinkInstance instance = element as RevitLinkInstance;
                 Document linkDoc = instance.GetLinkDocument();
@@ -111,7 +111,7 @@ namespace BimIshou.Commands
             }
             Checktag checkTag = new Checktag();
             CheckTag5 checkTag5 = new CheckTag5();
-            foreach (Element element in collector)
+            foreach (Element element in listLink)
             {
                 RevitLinkInstance instance = element as RevitLinkInstance;
                 try
