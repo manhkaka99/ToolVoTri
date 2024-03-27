@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using BimIshou.AddNumberArea;
 using BimIshou.AutoTag;
 using BimIshou.Commands;
 using BimIshou.Commands.DimDoubuchi;
@@ -80,20 +81,20 @@ namespace BimIshou
             var panel2 = Application.CreatePanel("Tool Vô Tri", "BimIshou");
 
             var tagSite = panel2.AddSplitButton("TagSite", "Tag Level Site");
-            tagSite.ToolTip = "Tag các mốc cao độ!";
+            tagSite.ToolTip = "Tag các mốc cao độ.";
             tagSite.SetImage("/BimIshou;component/Resources/Icons/TagSite16.png");
             tagSite.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
             var tagSite1 = tagSite.AddPushButton<TagSite>("Tag Level Gaiko\nTừ file Link");
-            tagSite1.ToolTip = "Tag các mốc cao độ từ file link Gaiko!";
+            tagSite1.ToolTip = "Tag các mốc cao độ từ file link Gaiko.";
             tagSite1.SetImage("/BimIshou;component/Resources/Icons/TagSite16.png");
             tagSite1.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
             var tagSite2 = tagSite.AddPushButton<TagSite_Project>("Tag Level Gaiko\nTrong Project");
-            tagSite2.ToolTip = "Tag các mốc cao độ trong Project!";
+            tagSite2.ToolTip = "Tag các mốc cao độ trong Project.";
             tagSite2.SetImage("/BimIshou;component/Resources/Icons/TagSite16.png");
             tagSite2.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
 
             var tagDim = panel2.AddPushButton<TextDim>("Text 有効");
-            tagDim.ToolTip = "Text thêm chữ 有効 vào phía trước đoạn Dimension được chọn!";
+            tagDim.ToolTip = "Text thêm chữ 有効 vào phía trước đoạn Dimension được chọn.";
             tagDim.SetImage("/BimIshou;component/Resources/Icons/TextDim16.png");
             tagDim.SetLargeImage("/BimIshou;component/Resources/Icons/TextDim32.png");
 
@@ -116,6 +117,16 @@ namespace BimIshou
             visibilityGridLevel.ToolTip = "Ẩn hiện bubble của grid và level.";
             visibilityGridLevel.SetImage("/BimIshou;component/Resources/Icons/VisibilityGridLevel16.png");
             visibilityGridLevel.SetLargeImage("/BimIshou;component/Resources/Icons/VisibilityGridLevel32.png");
+
+            var addNumberArea = panel2.AddPushButton<AddnumberArea>("Add Number Area");
+            addNumberArea.ToolTip = "Đánh STT cho Area.";
+            addNumberArea.SetImage("/BimIshou;component/Resources/Icons/AddnumberArea16.png");
+            addNumberArea.SetLargeImage("/BimIshou;component/Resources/Icons/AddnumberArea32.png");
+
+            var checkoutStatus = panel2.AddPushButton<CheckoutStatus>("Who?");
+            checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";
+            checkoutStatus.SetImage("/BimIshou;component/Resources/Icons/CheckoutStatus16.png");
+            checkoutStatus.SetLargeImage("/BimIshou;component/Resources/Icons/CheckoutStatus32.png");
 
             //var about = panel2.AddPushButton<Aboout>("About");
             //about.ToolTip = "Nếu bạn cảm thấy buồn và mệt mỏi. Hãy ấn vào đây nha.";

@@ -1,4 +1,4 @@
-﻿<mah:MetroWindow x:Class="BimIshou.WPF.OverideAreaWindow"
+﻿<mah:MetroWindow x:Class="BimIshou.AddNumberArea.AddnumberAreaWPF"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,11 +8,11 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="OverrideArea" 
+        Title="Add Number Area" 
         ResizeMode="CanResize"
         ShowInTaskbar="True" 
         WindowStartupLocation="CenterScreen"
-        Height="179" Width="348" 
+        Height="234" Width="412" 
         Topmost="True">
 
     <Window.Resources>
@@ -24,15 +24,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
-
     <DockPanel x:Name="MainPanel" 
                 LastChildFill="True">
-
         <DockPanel DockPanel.Dock="Bottom">
+
             <Button DockPanel.Dock="Right"
                     VerticalAlignment="Bottom"
-                    Content="CANCEL"
+                    Content="Cancel"
                     Background="Pink"
                     Width="100"
                     Click="btnCancel_Click"
@@ -46,43 +44,17 @@
                     IsDefault="True"
                     Click="btnOk_Click" />
         </DockPanel>
-
-        <Grid DockPanel.Dock="Top"
-              VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition 
-                    Width="100"/>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Text ="Pattern"
+        <TextBlock Text ="Nhập STT Area"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-            />
-            <ComboBox
-            Grid.Column="1" Grid.Row="0"
-            VerticalAlignment="Top"
-                x:Name="AllPattern"
-                Opacity="100"
-                DisplayMemberPath="Name" 
-                SelectedIndex="14"
-            />
-            <TextBlock Text ="LineWeight"
-                       Grid.Row="1"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-            />
-            <ComboBox
-                Grid.Column="1" Grid.Row="1"
-                VerticalAlignment="Top"
-                x:Name="AllLineWeight" 
-                SelectedIndex="2"
-            />
-        </Grid>
-
+                       HorizontalAlignment="Center"/>
+        <TextBox HorizontalAlignment="Center"  
+             VerticalAlignment="Center" 
+             Width="120"
+             PreviewTextInput="checkText" 
+             x:Name="nbs"/>
     </DockPanel>
+    
+
+
 </mah:MetroWindow>
+

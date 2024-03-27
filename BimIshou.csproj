@@ -58,8 +58,12 @@
     <ItemGroup>
       <None Remove="Resources\Icons\About16.png" />
       <None Remove="Resources\Icons\About32.png" />
+      <None Remove="Resources\Icons\AddnumberArea16.png" />
+      <None Remove="Resources\Icons\AddnumberArea32.png" />
       <None Remove="Resources\Icons\AutoTag16.png" />
       <None Remove="Resources\Icons\AutoTag32.png" />
+      <None Remove="Resources\Icons\CheckoutStatus16.png" />
+      <None Remove="Resources\Icons\CheckoutStatus32.png" />
       <None Remove="Resources\Icons\door.png" />
       <None Remove="Resources\Icons\DuplicateSheetCMD16.png" />
       <None Remove="Resources\Icons\DuplicateSheetCMD32.png" />
@@ -101,6 +105,10 @@
     <ItemGroup>
         <Resource Include="Resources\Icons\About16.png" />
         <Resource Include="Resources\Icons\About32.png" />
+        <Resource Include="Resources\Icons\AddnumberArea16.png" />
+        <Resource Include="Resources\Icons\AddnumberArea32.png" />
+        <Resource Include="Resources\Icons\CheckoutStatus16.png" />
+        <Resource Include="Resources\Icons\CheckoutStatus32.png" />
         <Resource Include="Resources\Icons\DuplicateSheetCMD16.png" />
         <Resource Include="Resources\Icons\DuplicateSheetCMD32.png" />
         <Resource Include="Resources\Icons\FloorSite16.png" />
