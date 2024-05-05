@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BimIshou.ShowGrid
 {
     [Transaction(TransactionMode.Manual)]
-    public class ConvertGrid2D : IExternalCommand
+    public class Level3D : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -18,17 +18,17 @@ namespace BimIshou.ShowGrid
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            FilteredElementCollector grids = new FilteredElementCollector(doc, doc.ActiveView.Id)
-                .OfCategory(BuiltInCategory.OST_Grids)
+            FilteredElementCollector levels = new FilteredElementCollector(doc, doc.ActiveView.Id)
+                .OfCategory(BuiltInCategory.OST_Levels)
                 .WhereElementIsNotElementType();
-            using (Transaction trans = new Transaction(doc, "Convert Grid 2D"))
+            using (Transaction trans = new Transaction(doc, "Convert Level 3D"))
             {
                 trans.Start();
-                foreach (Element element in grids)
+                foreach (Element element in levels)
                 {
-                    Grid grid = element as Grid;
-                    grid.SetDatumExtentType(DatumEnds.End0, doc.ActiveView, DatumExtentType.ViewSpecific);
-                    grid.SetDatumExtentType(DatumEnds.End1, doc.ActiveView, DatumExtentType.ViewSpecific);
+                    Level level = element as Level;
+                    level.SetDatumExtentType(DatumEnds.End0, doc.ActiveView, DatumExtentType.Model);
+                    level.SetDatumExtentType(DatumEnds.End1, doc.ActiveView, DatumExtentType.Model);
                 }
                 trans.Commit();
             }

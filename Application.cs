@@ -22,8 +22,8 @@ namespace BimIshou
 
         private void CreateRibbon()
         {
-            #region Dimensions
-            var panel1 = Application.CreatePanel("Dimensions", "BimIshou");
+            #region First
+            var panel1 = Application.CreatePanel("First", "BimIshou");
 
             //var dimCh = panel1.AddPushButton<DimCH>("Dim CH");
             //dimCh.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
@@ -80,7 +80,7 @@ namespace BimIshou
             #region Tool Vo Tri
             var panel2 = Application.CreatePanel("Tool Vô Tri", "BimIshou");
 
-            var tagSite = panel2.AddSplitButton("TagSite", "Tag Level Site");
+            var tagSite = panel2.AddPullDownButton("TagSite", "Tag Level Site");
             tagSite.ToolTip = "Tag các mốc cao độ.";
             tagSite.SetImage("/BimIshou;component/Resources/Icons/TagSite16.png");
             tagSite.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
@@ -113,10 +113,31 @@ namespace BimIshou
             overide.SetImage("/BimIshou;component/Resources/Icons/Overide16.png");
             overide.SetLargeImage("/BimIshou;component/Resources/Icons/Overide32.png");
 
-            var visibilityGridLevel = panel2.AddPushButton<VisibilityGridLevel>("Visibility\nGrid and Level");
+            var GridLevel = panel2.AddPullDownButton("Level and Grid", "Level and Grid");
+            GridLevel.ToolTip = "Ẩn hiện Level và Grid";
+            GridLevel.SetImage("/BimIshou;component/Resources/Icons/Levelandgrid16.png");
+            GridLevel.SetLargeImage("/BimIshou;component/Resources/Icons/Levelandgrid32.png");
+            var visibilityGridLevel = GridLevel.AddPushButton<VisibilityGridLevel>("Visibility\nGrid and Level");
             visibilityGridLevel.ToolTip = "Ẩn hiện bubble của grid và level.";
             visibilityGridLevel.SetImage("/BimIshou;component/Resources/Icons/VisibilityGridLevel16.png");
             visibilityGridLevel.SetLargeImage("/BimIshou;component/Resources/Icons/VisibilityGridLevel32.png");
+            var converGrid2D = GridLevel.AddPushButton<ConvertGrid2D>("Convert Grid to 2D");
+            converGrid2D.ToolTip = "Chuyển toàn bộ Grid trong view thành 2D";
+            converGrid2D.SetImage("/BimIshou;component/Resources/Icons/2D16.png");
+            converGrid2D.SetLargeImage("/BimIshou;component/Resources/Icons/2D32.png");
+            var converGrid3D = GridLevel.AddPushButton<ConvertGrid3D>("Convert Grid to 3D");
+            converGrid3D.ToolTip = "Chuyển toàn bộ Grid trong view thành 3D";
+            converGrid3D.SetImage("/BimIshou;component/Resources/Icons/3D16.png");
+            converGrid3D.SetLargeImage("/BimIshou;component/Resources/Icons/3D32.png");
+            var level2D = GridLevel.AddPushButton<Level2D>("Convert Level to 2D");
+            level2D.ToolTip = "Chuyển toàn bộ Level trong view thành 2D";
+            level2D.SetImage("/BimIshou;component/Resources/Icons/2D16.png");
+            level2D.SetLargeImage("/BimIshou;component/Resources/Icons/2D32.png");
+            var level3D = GridLevel.AddPushButton<Level3D>("Convert Level to 3D");
+            level3D.ToolTip = "Chuyển toàn bộ Level trong view thành 3D";
+            level3D.SetImage("/BimIshou;component/Resources/Icons/3D16.png");
+            level3D.SetLargeImage("/BimIshou;component/Resources/Icons/3D32.png");
+
 
             var addNumberArea = panel2.AddPushButton<AddnumberArea>("Add Number Area");
             addNumberArea.ToolTip = "Đánh STT cho Area.";
@@ -127,11 +148,6 @@ namespace BimIshou
             checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";
             checkoutStatus.SetImage("/BimIshou;component/Resources/Icons/CheckoutStatus16.png");
             checkoutStatus.SetLargeImage("/BimIshou;component/Resources/Icons/CheckoutStatus32.png");
-
-            //var about = panel2.AddPushButton<Aboout>("About");
-            //about.ToolTip = "Nếu bạn cảm thấy buồn và mệt mỏi. Hãy ấn vào đây nha.";
-            //about.SetImage("/BimIshou;component/Resources/Icons/About16.png");
-            //about.SetLargeImage("/BimIshou;component/Resources/Icons/About32.png");
 
             #endregion
 

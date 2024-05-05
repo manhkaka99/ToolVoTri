@@ -43,6 +43,10 @@
                     Width="100"
                     IsDefault="True"
                     Click="btnOk_Click" />
+            <Image ToolTip="Mạnh Em"
+                   Height="30" 
+                   HorizontalAlignment="Left"
+                   Source="/BimIshou;component/Resources/Logo2.png"/>
         </DockPanel>
         <TextBlock Text ="Nhập STT Area"
                        VerticalAlignment="Center"

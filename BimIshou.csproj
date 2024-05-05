@@ -56,6 +56,10 @@
         <StartArguments>/language ENG</StartArguments>
     </PropertyGroup>
     <ItemGroup>
+      <None Remove="Resources\Icons\2D16.png" />
+      <None Remove="Resources\Icons\2D32.png" />
+      <None Remove="Resources\Icons\3D16.png" />
+      <None Remove="Resources\Icons\3D32.png" />
       <None Remove="Resources\Icons\About16.png" />
       <None Remove="Resources\Icons\About32.png" />
       <None Remove="Resources\Icons\AddnumberArea16.png" />
@@ -69,6 +73,8 @@
       <None Remove="Resources\Icons\DuplicateSheetCMD32.png" />
       <None Remove="Resources\Icons\FloorSite16.png" />
       <None Remove="Resources\Icons\FloorSite32.png" />
+      <None Remove="Resources\Icons\Levelandgrid16.png" />
+      <None Remove="Resources\Icons\Levelandgrid32.png" />
       <None Remove="Resources\Icons\MultiCut16.png" />
       <None Remove="Resources\Icons\MultiCut32.png" />
       <None Remove="Resources\Icons\MultiCutCMD16.png" />
@@ -105,6 +111,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Resource Include="Resources\Icons\2D16.png" />
+        <Resource Include="Resources\Icons\2D32.png" />
+        <Resource Include="Resources\Icons\3D16.png" />
+        <Resource Include="Resources\Icons\3D32.png" />
         <Resource Include="Resources\Icons\About16.png" />
         <Resource Include="Resources\Icons\About32.png" />
         <Resource Include="Resources\Icons\AddnumberArea16.png" />
@@ -115,6 +125,8 @@
         <Resource Include="Resources\Icons\DuplicateSheetCMD32.png" />
         <Resource Include="Resources\Icons\FloorSite16.png" />
         <Resource Include="Resources\Icons\FloorSite32.png" />
+        <Resource Include="Resources\Icons\Levelandgrid16.png" />
+        <Resource Include="Resources\Icons\Levelandgrid32.png" />
         <Resource Include="Resources\Icons\MultiCutCMD16.png" />
         <Resource Include="Resources\Icons\MultiCutCMD32.png" />
         <Resource Include="Resources\Icons\Overide16.png" />
