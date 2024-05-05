@@ -45,6 +45,10 @@
                     Width="120"
                     IsDefault="True"
                     Click="btnAll_Click" />
+            <Image ToolTip="Mạnh Em"
+                   Height="30" 
+                   HorizontalAlignment="Left"
+                   Source="/BimIshou;component/Resources/Logo2.png"/>
         </DockPanel>
 
         <Border BorderThickness="5"

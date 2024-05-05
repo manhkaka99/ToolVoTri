@@ -47,10 +47,6 @@
             <Image ToolTip="Mạnh Em"
                    Height="30" 
                    HorizontalAlignment="Left"
-                   Source="/BimIshou;component/Resources/Logo.png"/>
-            <Image 
-                   Height="30" 
-                   HorizontalAlignment="Left"
                    Source="/BimIshou;component/Resources/Logo2.png"/>
         </DockPanel>
         <Grid DockPanel.Dock="Top"
