@@ -64,7 +64,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Top"
                       Width="100"
-                  IsChecked="True"/>
+                  IsChecked="False"/>
 
                 <CheckBox DockPanel.Dock="Bottom"
             Content="Bottom" 
@@ -73,7 +73,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Bottom"
                       Width="100"
-                  IsChecked="True"/>
+                  IsChecked="False"/>
 
                 <CheckBox DockPanel.Dock="Left"
                     Content="Left" 
@@ -82,7 +82,7 @@
                       HorizontalAlignment="Left"
                       VerticalAlignment="Center"
                       Width="50"
-                  IsChecked="True"/>
+                  IsChecked="False"/>
 
 
                 <CheckBox DockPanel.Dock="Right"
@@ -92,7 +92,7 @@
                       HorizontalAlignment="Right"
                       VerticalAlignment="Center"
                       Width="70"
-                      IsChecked="True"/>
+                      IsChecked="False"/>
 
             </DockPanel>
         </Border>
