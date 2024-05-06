@@ -18,11 +18,13 @@ namespace BimIshou.AutoJoin
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-
+            
 
 
 
             return Result.Succeeded;
         }
+
     }
+    
 }
