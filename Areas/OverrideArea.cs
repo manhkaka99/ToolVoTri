@@ -4,7 +4,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using BimIshou.WPF;
+using BimIshou.Areas;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,10 +14,10 @@ using System.Reflection;
 using MahApps.Metro.Controls;
 using Application = Autodesk.Revit.ApplicationServices.Application;
 #endregion
-namespace BimIshou.Commands
+namespace BimIshou.Areas
 {
-    [TransactionAttribute(TransactionMode.Manual)]
-    public class OverideArea : IExternalCommand
+    [Transaction(TransactionMode.Manual)]
+    public class OverrideArea : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -100,5 +100,5 @@ namespace BimIshou.Commands
             return Result.Succeeded;
         }
     }
-    
+
 }

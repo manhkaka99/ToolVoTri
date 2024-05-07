@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace BimIshou.AutoJoin
+namespace BimIshou.Areas
 {
     [Transaction(TransactionMode.Manual)]
     public class ChangeTagArea : IExternalCommand
@@ -28,12 +28,6 @@ namespace BimIshou.AutoJoin
             FilteredElementCollector areaTags = new FilteredElementCollector(doc, doc.ActiveView.Id)
                 .OfCategory(BuiltInCategory.OST_AreaTags)
                 .WhereElementIsNotElementType();
-            List<Element> changeList = new List<Element>();
-            foreach(Element b in areaTags)
-            {
-                changeList.Add(b);
-            }
-
 
             List<String> numberroom = new List<String>();
             foreach (Element element in areas)
@@ -69,40 +63,22 @@ namespace BimIshou.AutoJoin
                 }   
             }
 
-            //List tag area có nhiều hơn 1 area
-            List<Element> areaTag2 = changeList.Except(areaTag1).ToList();
-
             FamilySymbol tagId1 = (from tag in new FilteredElementCollector(doc)
                                         .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_AreaTags)
                                         .Cast<FamilySymbol>()
                                    where tag.Name == "記号"
                                    select tag).First();
-            FamilySymbol tagId2 = (from tag in new FilteredElementCollector(doc)
-                                        .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_AreaTags)
-                                        .Cast<FamilySymbol>()
-                                   where tag.Name == "記号 番号"
-                                   select tag).First();
-            foreach(Element ele in areaTag2)
+
+            using (Transaction trans = new Transaction(doc, "Change Tag Area"))
             {
-                AreaTag areaTag = ele as AreaTag;
-                TaskDialog.Show("Test", areaTag.Area.LookupParameter("面積 エリア 記号").AsString());
-                
+                trans.Start();
+                foreach (Element ele in areaTag1)
+                {
+                    AreaTag areaTag = ele as AreaTag;
+                    areaTag.ChangeTypeId(tagId1.Id);
+                }
+                trans.Commit();
             }
-            //using (Transaction trans = new Transaction(doc, "Change Tag Area"))
-            //{
-            //    trans.Start();
-            //    foreach (Element ele in areaTag1)
-            //    {
-            //        AreaTag areaTag = ele as AreaTag;
-            //        areaTag.ChangeTypeId(tagId1.Id);
-            //    }
-            //    foreach (Element ele in areaTag2)
-            //    {
-            //        AreaTag areaTag = ele as AreaTag;
-            //        areaTag.ChangeTypeId(tagId2.Id);
-            //    }  
-            //    trans.Commit();
-            //}
 
             return Result.Succeeded;
         }

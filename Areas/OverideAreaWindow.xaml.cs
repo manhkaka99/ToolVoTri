@@ -19,7 +19,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.DB.Architecture;
 using MahApps.Metro.Controls;
 
-namespace BimIshou.WPF
+namespace BimIshou.Areas
 {
     /// <summary>
     /// Interaction logic for Window1.xaml

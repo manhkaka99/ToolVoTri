@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 using BimIshou.AddNumberArea;
+using BimIshou.Areas;
 using BimIshou.AutoTag;
 using BimIshou.Commands;
 using BimIshou.Commands.DimDoubuchi;
@@ -108,10 +109,19 @@ namespace BimIshou
             floorSite.SetImage("/BimIshou;component/Resources/Icons/FloorSite16.png");
             floorSite.SetLargeImage("/BimIshou;component/Resources/Icons/FloorSite32.png");
 
-            var overide = panel2.AddPushButton<OverideArea>("OverrideArea");
-            overide.ToolTip = "Chỉnh các nét chia Area.";
-            overide.SetImage("/BimIshou;component/Resources/Icons/Overide16.png");
-            overide.SetLargeImage("/BimIshou;component/Resources/Icons/Overide32.png");
+            var areas = panel2.AddSplitButton("Area", "Áp dụng cho bản diện tích");
+            var overrideArea = areas.AddPushButton<OverrideArea>("OverrideArea");
+            overrideArea.ToolTip = "Chỉnh các nét chia Area.";
+            overrideArea.SetImage("/BimIshou;component/Resources/Icons/Override16.png");
+            overrideArea.SetLargeImage("/BimIshou;component/Resources/Icons/Override32.png");
+            var changeTagArea = areas.AddPushButton<ChangeTagArea>("Change Tag Area");
+            changeTagArea.ToolTip = "Đổi các tag của các Area chỉ có một về tag 記号\n Lưu ý: Phải chạy tool gán thông tin Room cho Area trước khi chạy tool này";
+            changeTagArea.SetImage("/BimIshou;component/Resources/Icons/changeTagArea16.png");
+            changeTagArea.SetLargeImage("/BimIshou;component/Resources/Icons/changeTagArea32.png");
+            var addNumberArea = areas.AddPushButton<AddnumberArea>("Add Number Area");
+            addNumberArea.ToolTip = "Đánh STT cho Area.";
+            addNumberArea.SetImage("/BimIshou;component/Resources/Icons/AddnumberArea16.png");
+            addNumberArea.SetLargeImage("/BimIshou;component/Resources/Icons/AddnumberArea32.png");
 
             var GridLevel = panel2.AddPullDownButton("Level and Grid", "Level and Grid");
             GridLevel.ToolTip = "Ẩn hiện Level và Grid";
@@ -137,12 +147,6 @@ namespace BimIshou
             level3D.ToolTip = "Chuyển toàn bộ Level trong view thành 3D";
             level3D.SetImage("/BimIshou;component/Resources/Icons/3D16.png");
             level3D.SetLargeImage("/BimIshou;component/Resources/Icons/3D32.png");
-
-
-            var addNumberArea = panel2.AddPushButton<AddnumberArea>("Add Number Area");
-            addNumberArea.ToolTip = "Đánh STT cho Area.";
-            addNumberArea.SetImage("/BimIshou;component/Resources/Icons/AddnumberArea16.png");
-            addNumberArea.SetLargeImage("/BimIshou;component/Resources/Icons/AddnumberArea32.png");
 
             var checkoutStatus = panel2.AddPushButton<CheckoutStatus>("Who?");
             checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";
