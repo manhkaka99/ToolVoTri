@@ -148,6 +148,14 @@ namespace BimIshou
             level3D.SetImage("/BimIshou;component/Resources/Icons/3D16.png");
             level3D.SetLargeImage("/BimIshou;component/Resources/Icons/3D32.png");
 
+            var a17 = panel2.AddSplitButton("A17", "Áp dụng cho bản diện tích");
+            var removeText = a17.AddPushButton<RemoveText>("Remove Text\nChange Type");
+            removeText.ToolTip = "Xóa các chữ A, B, C, D khi làm 展開図\n Nếu chọn view trong sheet thì sẽ đổi tên view về ビュー名";
+            removeText.SetImage("/BimIshou;component/Resources/Icons/RemoveText16.png");
+            removeText.SetLargeImage("/BimIshou;component/Resources/Icons/RemoveText32.png");
+
+
+
             var checkoutStatus = panel2.AddPushButton<CheckoutStatus>("Who?");
             checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";
             checkoutStatus.SetImage("/BimIshou;component/Resources/Icons/CheckoutStatus16.png");

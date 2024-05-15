@@ -83,6 +83,8 @@
       <None Remove="Resources\Icons\MultiCutCMD32.png" />
       <None Remove="Resources\Icons\Override16.png" />
       <None Remove="Resources\Icons\Override32.png" />
+      <None Remove="Resources\Icons\RemoveText16.png" />
+      <None Remove="Resources\Icons\RemoveText32.png" />
       <None Remove="Resources\Icons\Tagroom16.png" />
       <None Remove="Resources\Icons\Tagroom32.png" />
       <None Remove="Resources\Icons\TagSite16.png" />
@@ -135,6 +137,8 @@
         <Resource Include="Resources\Icons\MultiCutCMD32.png" />
         <Resource Include="Resources\Icons\Override16.png" />
         <Resource Include="Resources\Icons\Override32.png" />
+        <Resource Include="Resources\Icons\RemoveText16.png" />
+        <Resource Include="Resources\Icons\RemoveText32.png" />
         <Resource Include="Resources\Icons\RibbonIcon16.png" />
         <Resource Include="Resources\Icons\RibbonIcon32.png" />
         <Resource Include="Resources\Icons\Tagroom16.png" />
