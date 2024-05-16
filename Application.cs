@@ -154,8 +154,6 @@ namespace BimIshou
             removeText.SetImage("/BimIshou;component/Resources/Icons/RemoveText16.png");
             removeText.SetLargeImage("/BimIshou;component/Resources/Icons/RemoveText32.png");
 
-
-
             var checkoutStatus = panel2.AddPushButton<CheckoutStatus>("Who?");
             checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";
             checkoutStatus.SetImage("/BimIshou;component/Resources/Icons/CheckoutStatus16.png");

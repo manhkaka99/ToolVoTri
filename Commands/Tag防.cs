@@ -44,7 +44,7 @@ namespace BimIshou.Commands
             foreach (Element ele in doors)
             {
                 FamilySymbol doorFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
-                string a = doorFamily.LookupParameter("建具_法").AsString();
+                string a = doorFamily.LookupParameter("建具 法").AsString();
                 if (a != null & a != "" & a != "-")
                 {
                     doorAll1.Add(ele);
@@ -61,7 +61,7 @@ namespace BimIshou.Commands
             foreach (Element ele in windows)
             {
                 FamilySymbol windowFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
-                string a = windowFamily.LookupParameter("建具_法").AsString();
+                string a = windowFamily.LookupParameter("建具 法").AsString();
                 if (a != null & a != "" & a != "-")
                 {
                     windowAll1.Add(ele);
@@ -98,7 +98,6 @@ namespace BimIshou.Commands
                     doorTag.Add(a);
                 }
             }
-
             FilteredElementCollector windowTags = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_WindowTags).WhereElementIsNotElementType();
             ICollection<Element> windowTag = new List<Element>();
 
@@ -110,8 +109,6 @@ namespace BimIshou.Commands
                 }
             }
             #endregion
-
-
             try
             {
                 using (Transaction trans = new Transaction(doc, "Tag 防"))
@@ -122,8 +119,8 @@ namespace BimIshou.Commands
                         if (checkTag.checkTag(doc, door, doorTag) == false)
                         {
                             Reference reference = new Reference(door);
-                            LocationPoint loc = door.Location as LocationPoint;
-                            XYZ pos = loc.Point;
+                            FamilyInstance loc = door as FamilyInstance;
+                            XYZ pos = loc.GetTransform().Origin;
                             IndependentTag IT = IndependentTag.Create(doc, doorTagType.Id, doc.ActiveView.Id, reference, false, TagOrientation.Horizontal, pos);
                         }
                     }

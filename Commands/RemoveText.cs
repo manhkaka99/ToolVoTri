@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace BimIshou.Areas
+namespace BimIshou.Commands
 {
     [Transaction(TransactionMode.Manual)]
     public class RemoveText : IExternalCommand
@@ -20,7 +20,7 @@ namespace BimIshou.Areas
             Document doc = uidoc.Document;
 
 
-            IList <ElementId> view = (IList<ElementId>)uidoc.Selection.GetElementIds();
+            IList<ElementId> view = (IList<ElementId>)uidoc.Selection.GetElementIds();
             IList<Element> text = new List<Element>();
             IList<Element> viewPort = new List<Element>();
 
@@ -73,12 +73,12 @@ namespace BimIshou.Areas
             using (Transaction trans = new Transaction(doc, "Remove Text"))
             {
                 trans.Start();
-                
-                foreach(Element e in text)
+
+                foreach (Element e in text)
                 {
                     doc.Delete(e.Id);
                 }
-                foreach(Element e in viewPort)
+                foreach (Element e in viewPort)
                 {
                     e.ChangeTypeId(type);
                 }
@@ -87,5 +87,5 @@ namespace BimIshou.Areas
 
             return Result.Succeeded;
         }
-    } 
+    }
 }
