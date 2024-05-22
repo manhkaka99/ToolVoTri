@@ -44,7 +44,7 @@ namespace BimIshou.Commands
             foreach (Element ele in doors)
             {
                 FamilySymbol doorFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
-                string a = doorFamily.LookupParameter("建具 法").AsString();
+                string a = doorFamily.LookupParameter("建具_法").AsString();
                 if (a != null & a != "" & a != "-")
                 {
                     doorAll1.Add(ele);
@@ -61,7 +61,7 @@ namespace BimIshou.Commands
             foreach (Element ele in windows)
             {
                 FamilySymbol windowFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
-                string a = windowFamily.LookupParameter("建具 法").AsString();
+                string a = windowFamily.LookupParameter("建具_法").AsString();
                 if (a != null & a != "" & a != "-")
                 {
                     windowAll1.Add(ele);
