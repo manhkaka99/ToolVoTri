@@ -3,7 +3,7 @@ using BimIshou.AddNumberArea;
 using BimIshou.Areas;
 using BimIshou.AutoTag;
 using BimIshou.Commands;
-using BimIshou.Commands.DimDoubuchi;
+using BimIshou.DimWall;
 using BimIshou.DuplicateSheet;
 using BimIshou.PointFloorSite;
 using BimIshou.ShowGrid;
@@ -26,26 +26,6 @@ namespace BimIshou
             #region First
             var panel1 = Application.CreatePanel("First", "BimIshou");
 
-            //var dimCh = panel1.AddPushButton<DimCH>("Dim CH");
-            //dimCh.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //dimCh.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
-            //var dimFuniture = panel1.AddPushButton<DimFuniture>("Dim Funiture");
-            //dimFuniture.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //dimFuniture.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
-            //var DimW = panel1.AddPushButton<DimW>("Dim W");
-            //DimW.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //DimW.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
-            //var DimDoorAndWindow = panel1.AddPushButton<AutoDimDoor>("Dim DoorAndWindow");
-            //DimDoorAndWindow.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //DimDoorAndWindow.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
-            //var DimTT = panel1.AddPushButton<DimTT>("Dim 有効");
-            //DimTT.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //DimTT.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
             var MuliCutFilter = panel1.AddPushButton<MultiCutCMD>("Multi Cut");
             MuliCutFilter.ToolTip = "Cắt tự động thanh Doubuchi.";
             MuliCutFilter.SetImage("/BimIshou;component/Resources/Icons/MultiCutCMD16.png");
@@ -61,21 +41,6 @@ namespace BimIshou
             DuplicateSheetCMD.SetImage("/BimIshou;component/Resources/Icons/DuplicateSheetCMD16.png");
             DuplicateSheetCMD.SetLargeImage("/BimIshou;component/Resources/Icons/DuplicateSheetCMD32.png");
 
-            //var DimDoubuchi = panel1.AddSplitButton("dim", "dimdouchi");
-            //DimDoubuchi.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //DimDoubuchi.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
-            //var button1 = DimDoubuchi.AddPushButton<DimDoubuchi>("DimDoubuchi 1");
-            //button1.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //button1.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
-            //var button2 = DimDoubuchi.AddPushButton<SettingDim>("Setting");
-            //button2.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //button2.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
-
-            //var button3 = DimDoubuchi.AddPushButton<DimDoorOrWindowInDoubuchi>("DimDoubuchi 2");
-            //button3.SetImage("/BimIshou;component/Resources/Icons/RibbonIcon16.png");
-            //button3.SetLargeImage("/BimIshou;component/Resources/Icons/RibbonIcon32.png");
             #endregion
 
             #region Tool Vo Tri
@@ -148,11 +113,21 @@ namespace BimIshou
             level3D.SetImage("/BimIshou;component/Resources/Icons/3D16.png");
             level3D.SetLargeImage("/BimIshou;component/Resources/Icons/3D32.png");
 
-            var a17 = panel2.AddSplitButton("A17", "Áp dụng cho bản diện tích");
-            var removeText = a17.AddPushButton<RemoveText>("Remove Text\nChange Type");
+            var removeText = panel2.AddPushButton<RemoveText>("Remove Text\nChange Type");
             removeText.ToolTip = "Xóa các chữ A, B, C, D khi làm 展開図\n Nếu chọn view trong sheet thì sẽ đổi tên view về ビュー名";
             removeText.SetImage("/BimIshou;component/Resources/Icons/RemoveText16.png");
             removeText.SetLargeImage("/BimIshou;component/Resources/Icons/RemoveText32.png");
+
+            var dimWallPanel = panel2.AddSplitButton("Dim Wall", "Dim Wall");
+            var dimWall = dimWallPanel.AddPushButton<DimWall.DimWall>("Dim Wall A17");
+            dimWall.ToolTip = "Dim Wall A17";
+            dimWall.SetImage("/BimIshou;component/Resources/Icons/DimWall16.png");
+            dimWall.SetLargeImage("/BimIshou;component/Resources/Icons/DimWall32.png");
+            var setDimWall = dimWallPanel.AddPushButton<SettingDimWallCMD>("Setting");
+            setDimWall.ToolTip = "Setting khoảng cách dim";
+            setDimWall.SetImage("/BimIshou;component/Resources/Icons/Setting16.png");
+            setDimWall.SetLargeImage("/BimIshou;component/Resources/Icons/Setting32.png");
+
 
             var checkoutStatus = panel2.AddPushButton<CheckoutStatus>("Who?");
             checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";

@@ -70,6 +70,8 @@
       <None Remove="Resources\Icons\changeTagArea32.png" />
       <None Remove="Resources\Icons\CheckoutStatus16.png" />
       <None Remove="Resources\Icons\CheckoutStatus32.png" />
+      <None Remove="Resources\Icons\DimWall16.png" />
+      <None Remove="Resources\Icons\DimWall32.png" />
       <None Remove="Resources\Icons\door.png" />
       <None Remove="Resources\Icons\DuplicateSheetCMD16.png" />
       <None Remove="Resources\Icons\DuplicateSheetCMD32.png" />
@@ -85,6 +87,8 @@
       <None Remove="Resources\Icons\Override32.png" />
       <None Remove="Resources\Icons\RemoveText16.png" />
       <None Remove="Resources\Icons\RemoveText32.png" />
+      <None Remove="Resources\Icons\Setting16.png" />
+      <None Remove="Resources\Icons\Setting32.png" />
       <None Remove="Resources\Icons\Tagroom16.png" />
       <None Remove="Resources\Icons\Tagroom32.png" />
       <None Remove="Resources\Icons\TagSite16.png" />
@@ -106,6 +110,7 @@
         <PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*-*" />
         <PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*-*" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.*" />
+        <PackageReference Include="ricaun.Revit.DI" Version="1.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -127,6 +132,8 @@
         <Resource Include="Resources\Icons\changeTagArea32.png" />
         <Resource Include="Resources\Icons\CheckoutStatus16.png" />
         <Resource Include="Resources\Icons\CheckoutStatus32.png" />
+        <Resource Include="Resources\Icons\DimWall16.png" />
+        <Resource Include="Resources\Icons\DimWall32.png" />
         <Resource Include="Resources\Icons\DuplicateSheetCMD16.png" />
         <Resource Include="Resources\Icons\DuplicateSheetCMD32.png" />
         <Resource Include="Resources\Icons\FloorSite16.png" />
@@ -141,6 +148,8 @@
         <Resource Include="Resources\Icons\RemoveText32.png" />
         <Resource Include="Resources\Icons\RibbonIcon16.png" />
         <Resource Include="Resources\Icons\RibbonIcon32.png" />
+        <Resource Include="Resources\Icons\Setting16.png" />
+        <Resource Include="Resources\Icons\Setting32.png" />
         <Resource Include="Resources\Icons\Tagroom16.png" />
         <Resource Include="Resources\Icons\Tagroom32.png" />
         <Resource Include="Resources\Icons\TagSite16.png" />
