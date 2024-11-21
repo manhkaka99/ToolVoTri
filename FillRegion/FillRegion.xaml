@@ -1,0 +1,81 @@
+﻿<mah:MetroWindow x:Class="BimIshou.FillRegion.FillRegion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:BimIshou.Areas"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="FillRegion" 
+        ResizeMode="CanResize"
+        ShowInTaskbar="True" 
+        WindowStartupLocation="CenterScreen"
+        Height="179" Width="348" 
+        Topmost="True">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Pink.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <DockPanel x:Name="MainPanel" 
+                LastChildFill="True">
+
+        <DockPanel DockPanel.Dock="Bottom">
+            <Button DockPanel.Dock="Right"
+                    VerticalAlignment="Bottom"
+                    Content="CANCEL"
+                    Background="Pink"
+                    Width="100"
+                    Click="btnCancel_Click"
+                    IsCancel="True" />
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Content="OK"
+                    Background="Pink"
+                    Width="100"
+                    IsDefault="True"
+                    Click="btnOk_Click" />
+            <Image ToolTip="Mạnh Em"
+                   Height="30" 
+                   HorizontalAlignment="Left"
+                   Source="/BimIshou;component/Resources/Logo2.png"/>
+        </DockPanel>
+
+        <Grid DockPanel.Dock="Top"
+              VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition 
+                    Width="100"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text ="Chọn loại Fill"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+            />
+            <ComboBox
+            Grid.Column="1" Grid.Row="0"
+            VerticalAlignment="Top"
+                x:Name="allFill"
+                Opacity="100"
+                DisplayMemberPath="Name" 
+                SelectedIndex="14"
+            />
+        </Grid>
+
+    </DockPanel>
+</mah:MetroWindow>

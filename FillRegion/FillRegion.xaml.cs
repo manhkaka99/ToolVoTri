@@ -1,36 +1,49 @@
-﻿using Autodesk.Revit.Attributes;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Architecture;
-using Autodesk.Revit.UI;
-using Nice3point.Revit.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
+using MahApps.Metro.Controls;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
-
-namespace BimIshou.Commands
+namespace BimIshou.FillRegion
 {
-    [TransactionAttribute(TransactionMode.Manual)]
-    public class FillRegionA17 : IExternalCommand
+    /// <summary>
+    /// Interaction logic for FillRegiom.xaml
+    /// </summary>
+    public partial class FillRegion : MetroWindow
     {
-        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        UIDocument UiDoc;
+        Document Doc;
+        public FillRegion(UIDocument uiDoc)
         {
-            UIApplication uiapp = commandData.Application;
-            UIDocument uidoc = uiapp.ActiveUIDocument;
-            Document doc = uidoc.Document;
-
-            IList<ElementId> sheetId = (IList<ElementId>)uidoc.Selection.GetElementIds();
+            UiDoc = uiDoc;
+            Doc = UiDoc.Document;
+            InitializeComponent();
 
             //Lấy về loại FillRegion đang sử dụng
-            FilledRegionType filledRegionType = new FilteredElementCollector(doc)
+            IList<FilledRegionType> allFilledRegionType = new FilteredElementCollector(Doc)
             .OfClass(typeof(FilledRegionType))
             .Cast<FilledRegionType>()
-            .FirstOrDefault();
+            .OrderBy(x => x.Name).ToList();
+            allFill.ItemsSource = allFilledRegionType;
+        }
 
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
             #region Tìm loại tag Room
-            FilteredElementCollector tagTypeCollector = new FilteredElementCollector(doc)
+            FilteredElementCollector tagTypeCollector = new FilteredElementCollector(Doc)
                 .OfCategory(BuiltInCategory.OST_RoomTags)
                 .WhereElementIsElementType();
             // Tìm Room Tag Type với tên cụ thể (cập nhật tên ở đây)
@@ -49,20 +62,22 @@ namespace BimIshou.Commands
             if (roomTagTypeId == null)
             {
                 TaskDialog.Show("Lỗi", $"Không tìm thấy Room Tag với tên '{desiredTagName}'.");
-                return Result.Failed;
             }
-            #endregion 
+            #endregion
 
+            FilledRegionType filledRegionType = allFill.SelectedItem as FilledRegionType;
+
+           IList <ElementId> sheetId = (IList<ElementId>)UiDoc.Selection.GetElementIds();
             foreach (ElementId elementId in sheetId)
             {
-                var categorizedViews = CategorizeViewsOnSheet(doc, elementId);
+                var categorizedViews = CategorizeViewsOnSheet(Doc, elementId);
                 View view = null;
                 List<string> filteredList = new List<string>();
                 foreach (var category in categorizedViews)
                 {
                     if (category.Key == "Elevation")
                     {
-                        List<String> sheetNames = new List<string>();
+                        List<string> sheetNames = new List<string>();
                         foreach (var viewInfor in category.Value)
                         {
                             sheetNames.Add(viewInfor.Name);
@@ -78,21 +93,24 @@ namespace BimIshou.Commands
 
                         foreach (var viewInfor in category.Value)
                         {
-                            view = doc.GetElement(viewInfor.Id) as View;
+                            view = Doc.GetElement(viewInfor.Id) as View;
                         }
-
                     }
-
                 }
 
-                List<Room> filteredRooms = GetRoomsInViewByName(doc, view, filteredList);
+                List<Room> filteredRooms = GetRoomsInViewByName(Doc, view, filteredList);
 
-                CreateFilledRegionsForRooms(doc, filteredRooms, view, filledRegionType.Id, roomTagTypeId);
-
+                CreateFilledRegionsForRooms(Doc, filteredRooms, view, filledRegionType.Id, roomTagTypeId);
+                    
             }
-            return Result.Succeeded;
+            Close();
         }
-        public static List<String> GetSelectedSheetViewNames(Document doc, ElementId sheetId)
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        public static List<string> GetSelectedSheetViewNames(Document doc, ElementId sheetId)
         {
             //Lấy về tên view của các view trong sheet
             // Lấy đối tượng ViewSheet từ ElementId đã chọn
@@ -171,9 +189,9 @@ namespace BimIshou.Commands
                     // Kiểm tra nếu Room nằm trong View và tên Room trùng với danh sách
                     if (roomNames.Contains(room.LookupParameter("Name").AsString()))
                     {
-                        
-                            filteredRooms.Add(room);
-                        
+
+                        filteredRooms.Add(room);
+
                     }
                 }
             }
@@ -235,5 +253,4 @@ namespace BimIshou.Commands
             }
         }
     }
-
 }

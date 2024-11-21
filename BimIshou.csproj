@@ -75,6 +75,8 @@
       <None Remove="Resources\Icons\door.png" />
       <None Remove="Resources\Icons\DuplicateSheetCMD16.png" />
       <None Remove="Resources\Icons\DuplicateSheetCMD32.png" />
+      <None Remove="Resources\Icons\FillRegion16.png" />
+      <None Remove="Resources\Icons\FillRegion32.png" />
       <None Remove="Resources\Icons\FloorSite16.png" />
       <None Remove="Resources\Icons\FloorSite32.png" />
       <None Remove="Resources\Icons\Levelandgrid16.png" />
@@ -136,6 +138,8 @@
         <Resource Include="Resources\Icons\DimWall32.png" />
         <Resource Include="Resources\Icons\DuplicateSheetCMD16.png" />
         <Resource Include="Resources\Icons\DuplicateSheetCMD32.png" />
+        <Resource Include="Resources\Icons\FillRegion16.png" />
+        <Resource Include="Resources\Icons\FillRegion32.png" />
         <Resource Include="Resources\Icons\FloorSite16.png" />
         <Resource Include="Resources\Icons\FloorSite32.png" />
         <Resource Include="Resources\Icons\Levelandgrid16.png" />
