@@ -111,5 +111,9 @@ namespace BimIshou.Areas
             Close();
         }
 
+        private void AllLineWeight_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

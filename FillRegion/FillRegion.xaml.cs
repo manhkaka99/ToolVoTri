@@ -30,6 +30,7 @@ namespace BimIshou.FillRegion
         {
             UiDoc = uiDoc;
             Doc = UiDoc.Document;
+            
             InitializeComponent();
 
             //Lấy về loại FillRegion đang sử dụng
@@ -97,10 +98,11 @@ namespace BimIshou.FillRegion
                         }
                     }
                 }
+            
+                List<Room> filteredRoomTrue = GetRoomsInViewByName(Doc, view, filteredList).Item1;
+                List<Room> filteredRoomFalse = GetRoomsInViewByName(Doc, view, filteredList).Item2;
 
-                List<Room> filteredRooms = GetRoomsInViewByName(Doc, view, filteredList);
-
-                CreateFilledRegionsForRooms(Doc, filteredRooms, view, filledRegionType.Id, roomTagTypeId);
+                CreateFilledRegionsForRooms(Doc, filteredRoomTrue, view, filledRegionType.Id, roomTagTypeId);
                     
             }
             Close();
@@ -173,9 +175,10 @@ namespace BimIshou.FillRegion
 
             return categorizedViews;
         }
-        public static List<Room> GetRoomsInViewByName(Document doc, View view, List<string> roomNames)
+        public static Tuple<List<Room>, List<Room>> GetRoomsInViewByName(Document doc, View view, List<string> roomNames)
         {
-            List<Room> filteredRooms = new List<Room>();
+            List<Room> filteredRoomTrue = new List<Room>();
+            List<Room> filteredRoomFalse = new List<Room>();
             // Lấy tất cả các Room trong dự án
             FilteredElementCollector collector = new FilteredElementCollector(doc, view.Id)
                 .OfCategory(BuiltInCategory.OST_Rooms)
@@ -189,14 +192,16 @@ namespace BimIshou.FillRegion
                     // Kiểm tra nếu Room nằm trong View và tên Room trùng với danh sách
                     if (roomNames.Contains(room.LookupParameter("Name").AsString()))
                     {
-
-                        filteredRooms.Add(room);
-
+                        filteredRoomTrue.Add(room);
+                    }
+                    else
+                    {
+                        filteredRoomFalse.Add(room);
                     }
                 }
             }
 
-            return filteredRooms;
+            return new Tuple<List<Room>, List<Room>>(filteredRoomTrue, filteredRoomFalse);
         }
         public static void CreateFilledRegionsForRooms(Document doc, List<Room> rooms, View view, ElementId filledRegionTypeId, ElementId roomTagId)
         {
