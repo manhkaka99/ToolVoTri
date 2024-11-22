@@ -33,7 +33,9 @@ namespace BimIshou.Commands
             TagMode tMode = TagMode.TM_ADDBY_CATEGORY;
             TagOrientation tOrien = TagOrientation.Horizontal;
             #region Lấy về tag đã tag
-            FilteredElementCollector tagIds = new FilteredElementCollector(doc, doc.ActiveView.Id).OfCategory(BuiltInCategory.OST_SiteTags).WhereElementIsNotElementType();
+            FilteredElementCollector tagIds = new FilteredElementCollector(doc, doc.ActiveView.Id)
+                .OfCategory(BuiltInCategory.OST_SiteTags)
+                .WhereElementIsNotElementType();
 
             ICollection<Element> siteTagType = new List<Element>();
 

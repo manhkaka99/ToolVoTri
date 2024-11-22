@@ -133,7 +133,7 @@ namespace BimIshou.FillRegion
                 View view = doc.GetElement(viewId) as View;
                 if (view != null)
                 {
-                    viewNames.Add(view.Name);
+                    viewNames.Add(view.LookupParameter("Title on Sheet").AsString());
                 }
             }
             return viewNames;
