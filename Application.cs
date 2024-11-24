@@ -7,6 +7,7 @@ using BimIshou.DimWall;
 using BimIshou.DuplicateSheet;
 using BimIshou.PointFloorSite;
 using BimIshou.ShowGrid;
+using BimIshou.CreateRegion;
 using Nice3point.Revit.Extensions;
 using Nice3point.Revit.Toolkit.External;
 using System.Reflection;
@@ -117,6 +118,16 @@ namespace BimIshou
             removeText.ToolTip = "Xóa các chữ A, B, C, D khi làm 展開図\n Nếu chọn view trong sheet thì sẽ đổi tên view về ビュー名";
             removeText.SetImage("/BimIshou;component/Resources/Icons/RemoveText16.png");
             removeText.SetLargeImage("/BimIshou;component/Resources/Icons/RemoveText32.png");
+
+            var createRegion = panel2.AddPushButton<CreateRegion.CreateRegion>("Create Region");
+            createRegion.ToolTip = "Auto Tag + Fill Region các phòng trình bày trong Sheet 展開図\nLưu ý: Cần phải có 1 mặt bằng trong sheet";
+            createRegion.SetImage("/BimIshou;component/Resources/Icons/CreateRegion16.png");
+            createRegion.SetLargeImage("/BimIshou;component/Resources/Icons/CreateRegion32.png");
+
+            var checkTagWall = panel2.AddPushButton<CheckTagWall.CheckTagWall>("Check Tag Wall");
+            checkTagWall.ToolTip = "Kiểm tra xem có bao nhiêu loại tường đang được tag trong view.";
+            checkTagWall.SetImage("/BimIshou;component/Resources/Icons/CheckWallTag16.png");
+            checkTagWall.SetLargeImage("/BimIshou;component/Resources/Icons/CheckWallTag32.png");
 
             var dimWallPanel = panel2.AddSplitButton("Dim Wall", "Dim Wall");
             var dimWall = dimWallPanel.AddPushButton<DimWall.DimWall>("Dim Wall A17");

@@ -1,14 +1,18 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
-
-namespace BimIshou.CreateRegion
+namespace BimIshou.CheckTagWall
 {
     [Transaction(TransactionMode.Manual)]
-    public class CreateRegion : IExternalCommand
+    public class CheckTagWall : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -16,18 +20,10 @@ namespace BimIshou.CreateRegion
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            try
-            {
-                CreateRegionWindow createRegion = new CreateRegionWindow(uidoc);
-                createRegion.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                message = ex.Message;
-                return Result.Failed;
-            }
+            CheckTagWallWindow checkTagWallWindow = new CheckTagWallWindow(uidoc);
+            checkTagWallWindow.Show();
+            
             return Result.Succeeded;
-
         }
     }
 }
