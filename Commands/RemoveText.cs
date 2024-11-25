@@ -25,16 +25,10 @@ namespace BimIshou.Commands
             IList<Element> text = new List<Element>();
             IList<Element> viewPort = new List<Element>();
 
-            FilteredElementCollector viewportType = new FilteredElementCollector(doc)
-                        .WhereElementIsElementType(); // Chỉ lấy ElementType
-            ElementId viewPortTypeId = null;
-            foreach (ElementType element in viewportType)
-            {
-                if (element.Name == "ビュー名" && element.FamilyName == "Viewport")
-                {
-                    viewPortTypeId = element.Id;
-                }      
-            }
+            ElementType viewPortType = (from type in new FilteredElementCollector(doc)
+                                                      .WhereElementIsElementType().Cast<ElementType>()
+                                        where type.Name == "ビュー名" && type.FamilyName == "Viewport"
+                                        select type).First();
 
             foreach (ElementId elementId in view)
             {
@@ -75,7 +69,7 @@ namespace BimIshou.Commands
                 }
                 foreach (Element e in viewPort)
                 {
-                    e.ChangeTypeId(viewPortTypeId);
+                    e.ChangeTypeId(viewPortType.Id);
                 }
                 trans.Commit();
             }

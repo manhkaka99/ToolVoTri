@@ -62,7 +62,7 @@ namespace BimIshou.Commands
             FamilySymbol tagId1 = (from tag in new FilteredElementCollector(doc)
                                         .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_SiteTags)
                                         .Cast<FamilySymbol>()
-                                   where tag.Name == "計画のみ"
+                                   where tag.Name == "計画のみ" 
                                    select tag).First();
             FamilySymbol tagId2 = (from tag in new FilteredElementCollector(doc)
                                         .OfClass(typeof(FamilySymbol)).OfCategory(BuiltInCategory.OST_SiteTags)
