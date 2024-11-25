@@ -26,7 +26,8 @@ namespace BimIshou.Commands
             IList<Element> viewPort = new List<Element>();
 
             ElementType viewPortType = (from type in new FilteredElementCollector(doc)
-                                                      .WhereElementIsElementType().Cast<ElementType>()
+                                                      .WhereElementIsElementType()
+                                                      .Cast<ElementType>()
                                         where type.Name == "ビュー名" && type.FamilyName == "Viewport"
                                         select type).First();
 
