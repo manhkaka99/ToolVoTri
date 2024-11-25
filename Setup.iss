@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "BimIshou"
-#define MyAppVersion "1.0"
+#define MyAppVersion "2.0"
 #define MyAppPublisher "Manh Em"
 #define MyAppURL "Manh Em"
 
@@ -32,24 +32,15 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\BimIshou.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\BimIshou.pdb"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\CommunityToolkit.Mvvm.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\ControlzEx.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\JetBrains.Annotations.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\MahApps.Metro.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\Microsoft.Bcl.AsyncInterfaces.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\Microsoft.Xaml.Behaviors.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\Nice3point.Revit.Extensions.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\Nice3point.Revit.Toolkit.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\ricaun.DI.1.0.0.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\ricaun.Revit.DI.1.0.0.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\System.Buffers.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\System.ComponentModel.Annotations.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\System.Memory.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\System.Numerics.Vectors.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\BimIshou-Manh\bin\Debug R21\System.Threading.Tasks.Extensions.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
+;2019
+Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\"; Flags: ignoreversion
+Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\{#MyAppName}"; Flags: ignoreversion
+;2021
+Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\"; Flags: ignoreversion
+Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
+;2024
+Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2024 Debug R24\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2024\"; Flags: ignoreversion
+Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2024 Debug R24\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2024\{#MyAppName}"; Flags: ignoreversion
+
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

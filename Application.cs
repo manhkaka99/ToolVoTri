@@ -140,7 +140,7 @@ namespace BimIshou
             setDimWall.SetLargeImage("/BimIshou;component/Resources/Icons/Setting32.png");
 
 
-            var checkoutStatus = panel2.AddPushButton<CheckoutStatus>("Who?");
+            var checkoutStatus = panel2.AddPushButton<CheckoutStatusNDM>("Who?");
             checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";
             checkoutStatus.SetImage("/BimIshou;component/Resources/Icons/CheckoutStatus16.png");
             checkoutStatus.SetLargeImage("/BimIshou;component/Resources/Icons/CheckoutStatus32.png");

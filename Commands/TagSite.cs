@@ -16,6 +16,7 @@ using Nice3point.Revit.Toolkit.External;
 using System.Windows.Documents;
 using System.Windows.Controls;
 using System.Collections;
+using Autodesk.Revit.DB.Architecture;
 
 #endregion
 
@@ -129,14 +130,22 @@ namespace BimIshou.Commands
                                 if (ele.LookupParameter("現況レベル").AsDouble() == 0 || ele.LookupParameter("現況レベル").AsDouble() == null)
                                 {
                                     IndependentTag tag = IndependentTag.Create(doc, tagId1.Id, doc.ActiveView.Id, reference, true, tOrien, pos);
+#if REVIT2024_OR_GREATER
+                                    LinkElementId linkId = tag.GetTaggedElementIds().First();
+#else
                                     LinkElementId linkId = tag.TaggedElementId;
+#endif
                                     ElementId linkInsancetId = linkId.LinkInstanceId;
                                     ElementId linkedElementId = linkId.LinkedElementId;
                                 }
                                 else
                                 {
                                     IndependentTag tag = IndependentTag.Create(doc, tagId2.Id, doc.ActiveView.Id, reference, true, tOrien, pos);
+#if REVIT2024_OR_GREATER
+                                    LinkElementId linkId = tag.GetTaggedElementIds().First();
+#else
                                     LinkElementId linkId = tag.TaggedElementId;
+#endif
                                     ElementId linkInsancetId = linkId.LinkInstanceId;
                                     ElementId linkedElementId = linkId.LinkedElementId;
                                 }
@@ -180,10 +189,17 @@ namespace BimIshou.Commands
             foreach (Element tagId in tagIds)
             {
                 IndependentTag tag = tagId as IndependentTag;
+#if REVIT2024_OR_GREATER
+                if (tag != null && tag.GetTaggedReferences().First().LinkedElementId == elementId)
+                {
+                    return true;
+                }
+#else
                 if (tag != null && tag.GetTaggedReference().LinkedElementId == elementId)
                 {
                     return true;
                 }
+#endif
             }
             return false;
         }
@@ -193,7 +209,11 @@ namespace BimIshou.Commands
         public bool checkTag(Document doc, IList<Element> element, Element tags)
         {
             IndependentTag tag2 = tags as IndependentTag;
+#if REVIT2024_OR_GREATER
+            LinkElementId dele3 = tag2.GetTaggedElementIds().First();
+#else
             LinkElementId dele3 = tag2.TaggedElementId;
+#endif
             ElementId tagId = dele3.LinkedElementId;
 
             //ElementId tagId = tag2.GetTaggedReference().LinkedElementId;

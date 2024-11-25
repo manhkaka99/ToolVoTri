@@ -45,7 +45,7 @@ namespace BimIshou.Commands
             {
                 FamilySymbol doorFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
                 string a = doorFamily.LookupParameter("建具_法").AsString();
-                if (a != null & a != "" & a != "-")
+                if (a != null && a != "" && a != "-" && a != "ー")
                 {
                     doorAll1.Add(ele);
                 }
@@ -62,7 +62,7 @@ namespace BimIshou.Commands
             {
                 FamilySymbol windowFamily = doc.GetElement(ele.GetTypeId()) as FamilySymbol;
                 string a = windowFamily.LookupParameter("建具_法").AsString();
-                if (a != null & a != "" & a != "-")
+                if (a != null && a != "" && a != "-" && a != "ー")
                 {
                     windowAll1.Add(ele);
                 }
@@ -168,10 +168,17 @@ namespace BimIshou.Commands
             foreach (Element tag in tags)
             {
                 IndependentTag tag1 = tag as IndependentTag;
+#if REVIT2024_OR_GREATER
+                if (tag != null && tag1.GetTaggedLocalElementIds().First() == elementId)
+                {
+                    return true;
+                }
+#else
                 if (tag != null && tag1.TaggedLocalElementId == elementId)
                 {
                     return true;
                 }
+#endif
             }
             return false;
         }
@@ -181,7 +188,11 @@ namespace BimIshou.Commands
         public bool checkTag2(Document doc, ICollection<Element> element, Element tags)
         {
             IndependentTag tag2 = tags as IndependentTag;
+#if REVIT2024_OR_GREATER
+            ElementId tagId = tag2.GetTaggedLocalElementIds().First();
+#else
             ElementId tagId = tag2.TaggedLocalElementId;
+#endif
             foreach (Element ele in element)
             {
                 if (ele.Id != null && ele.Id == tagId)

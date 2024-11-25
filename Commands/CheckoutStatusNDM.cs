@@ -1,23 +1,13 @@
 ﻿#region Namespaces
 using Autodesk.Revit.Attributes;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using BimIshou.Areas;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using MahApps.Metro.Controls;
 #endregion
 
 namespace BimIshou.Commands
 {
-    [TransactionAttribute(TransactionMode.Manual)]
-    public class CheckoutStatus : IExternalCommand
+    [TransactionAttribute(TransactionMode.ReadOnly)]
+    public class CheckoutStatusNDM : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -73,7 +63,7 @@ namespace BimIshou.Commands
             message += ("\nCurrent Owner : " + tooltipInfo.Owner);
             message += ("\nLast Changed by : " + tooltipInfo.LastChangedBy);
 
-            Autodesk.Revit.UI.TaskDialog.Show("Checkout Status", message);
+            TaskDialog.Show("Checkout Status", message);
         }
     }
     

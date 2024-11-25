@@ -21,6 +21,8 @@ using Grid = Autodesk.Revit.DB.Grid;
 using System.Globalization;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using BimIshou.Commands;
+using System.Xml;
 
 namespace BimIshou.PointFloorSite
 {
@@ -52,12 +54,20 @@ namespace BimIshou.PointFloorSite
             else if(meterCheck)
             {
                 giaTri = Convert.ToDouble(caoDo.Text);
+#if REVIT2024_OR_GREATER
+                giaTri = UnitUtils.ConvertToInternalUnits(giaTri, UnitTypeId.Meters);
+#else
                 giaTri = UnitUtils.ConvertToInternalUnits(giaTri, DisplayUnitType.DUT_METERS);
+#endif
             }
             else if (millimeterCheck)
             {
                 giaTri = Convert.ToDouble(caoDo.Text);
+#if REVIT2024_OR_GREATER
+                giaTri = UnitUtils.ConvertToInternalUnits(giaTri, UnitTypeId.Millimeters);
+#else
                 giaTri = UnitUtils.ConvertToInternalUnits(giaTri, DisplayUnitType.DUT_MILLIMETERS);
+#endif
             }
             else
             {
@@ -135,7 +145,11 @@ namespace BimIshou.PointFloorSite
                             LocationPoint location = site.Location as LocationPoint;
                             XYZ a = location.Point;
                             Double chuyen =Convert.ToDouble(site.LookupParameter("計画レベル").AsValueString());
+#if REVIT2024_OR_GREATER
+                            Double doi = UnitUtils.ConvertToInternalUnits(chuyen, UnitTypeId.Meters);
+#else
                             Double doi = UnitUtils.ConvertToInternalUnits(chuyen, DisplayUnitType.DUT_METERS);
+#endif
                             Double point = (doi - giaTri);
                             
                             XYZ pos = new XYZ(a.X, a.Y, point);

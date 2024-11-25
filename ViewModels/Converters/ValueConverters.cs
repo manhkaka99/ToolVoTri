@@ -5,17 +5,17 @@ using System.Windows.Markup;
 
 namespace BimIshou.ViewModels.Converters
 {
-    [ValueConversion(typeof(bool), typeof(Visibility))]
+    [ValueConversion(typeof(bool), typeof(System.Windows.Visibility))]
     public class BoolVisibilityConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)value! ? Visibility.Visible : Visibility.Hidden;
+            return (bool)value! ? System.Windows.Visibility.Visible : System.Windows.Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (Visibility)value! == Visibility.Visible;
+            return (System.Windows.Visibility)value! == System.Windows.Visibility.Visible;
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -24,17 +24,17 @@ namespace BimIshou.ViewModels.Converters
         }
     }
 
-    [ValueConversion(typeof(bool), typeof(Visibility))]
+    [ValueConversion(typeof(bool), typeof(System.Windows.Visibility))]
     public class InverseBoolVisibilityConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)value! == false ? Visibility.Visible : Visibility.Hidden;
+            return (bool)value! == false ?  System.Windows.Visibility.Visible : System.Windows.Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (Visibility)value! != Visibility.Visible;
+            return (System.Windows.Visibility)value! != System.Windows.Visibility.Visible;
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider)

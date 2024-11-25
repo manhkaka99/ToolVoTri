@@ -150,10 +150,17 @@ namespace BimIshou.Commands
             foreach (Element tagId in tagIds)
             {
                 IndependentTag tag = tagId as IndependentTag;
+#if REVIT2024_OR_GREATER
+                if (tag != null && tag.GetTaggedLocalElementIds().First() == elementId)
+                {
+                    return true;
+                }
+#else
                 if (tag != null && tag.TaggedLocalElementId == elementId)
                 {
                     return true;
                 }
+#endif
             }
             return false;
         }
@@ -163,7 +170,11 @@ namespace BimIshou.Commands
         public bool checkTag(Document doc, IList<Element> element, Element tags)
         {
             IndependentTag tag2 = tags as IndependentTag;
+#if REVIT2024_OR_GREATER
+            ElementId tagId = tag2.GetTaggedLocalElementIds().First();
+#else
             ElementId tagId = tag2.TaggedLocalElementId;
+#endif
             foreach (Element ele in element)
             {
                 if (ele.Id != null && ele.Id == tagId)

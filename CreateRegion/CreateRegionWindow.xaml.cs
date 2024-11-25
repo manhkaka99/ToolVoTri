@@ -49,7 +49,7 @@ namespace BimIshou.CreateRegion
                 .OfCategory(BuiltInCategory.OST_RoomTags)
                 .WhereElementIsElementType();
             // Tìm Room Tag Type với tên cụ thể (cập nhật tên ở đây)
-            string desiredTagName = "名前 1.5mm"; // Thay bằng tên loại Room Tag bạn muốn sử dụng
+            string desiredTagName = "名前 1.5mm"; 
             ElementId roomTagTypeId = null;
 
             foreach (Element tagType in tagTypeCollector)
@@ -120,7 +120,8 @@ namespace BimIshou.CreateRegion
             roomIds = roomIds.Distinct().ToList();
             return (roomIds, floorPlanView);
         }
-        public void CreateFilledRegionAndTag(Document doc, List<ElementId> roomIds, View floorPlan, FilledRegionType filledRegionType, ElementId roomTagTypeId)
+        public void CreateFilledRegionAndTag(Document doc, List<ElementId> roomIds, 
+                                              View floorPlan, FilledRegionType filledRegionType, ElementId roomTagTypeId)
         {
             
             // Duyệt qua từng Room
@@ -157,7 +158,12 @@ namespace BimIshou.CreateRegion
                 {
                     IndependentTag roomTag = tag as IndependentTag;
                     // Lấy ElementId của Room được tag
+#if REVIT2024_OR_GREATER
+                    ElementId taggedId = roomTag.GetTaggedLocalElementIds().First();
+#else
                     ElementId taggedId = roomTag.TaggedLocalElementId;
+#endif
+
                     roomTags.Add(taggedId);
                 }
                 roomTags = roomTags.Distinct().ToList();
@@ -192,7 +198,11 @@ namespace BimIshou.CreateRegion
                 if (roomTag == null) continue;
 
                 // Lấy ElementId của Room được tag
-                ElementId taggedId = roomTag.TaggedLocalElementId;
+#if REVIT2024_OR_GREATER
+                ElementId taggedId = roomTag.GetTaggedLocalElementIds().First();
+#else
+                    ElementId taggedId = roomTag.TaggedLocalElementId;
+#endif
                 if (taggedId == ElementId.InvalidElementId) continue;
 
                 // Kiểm tra xem Room được tag có nằm trong danh sách roomIds không

@@ -26,9 +26,9 @@
     </Window.Resources>
     <StackPanel>
         <ListBox Name="ListBoxItems" 
-                 Height="200" 
+                 Height="250" 
                   />
-        <Button DockPanel.Dock="Right"
+        <Button DockPanel.Dock="Bottom"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         Content="OK"
