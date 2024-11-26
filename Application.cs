@@ -24,6 +24,8 @@ namespace BimIshou
 
         private void CreateRibbon()
         {
+            string pdfPath = @"%appdata%\Autodesk\Revit\Addins\BimIshouHelp";
+
             #region First
             var panel1 = Application.CreatePanel("First", "BimIshou");
 
@@ -51,6 +53,7 @@ namespace BimIshou
             tagSite.ToolTip = "Tag các mốc cao độ.";
             tagSite.SetImage("/BimIshou;component/Resources/Icons/TagSite16.png");
             tagSite.SetLargeImage("/BimIshou;component/Resources/Icons/TagSite32.png");
+            tagSite.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
             var tagSite1 = tagSite.AddPushButton<TagSite>("Tag Level Gaiko\nTừ file Link");
             tagSite1.ToolTip = "Tag các mốc cao độ từ file link Gaiko.";
             tagSite1.SetImage("/BimIshou;component/Resources/Icons/TagSite16.png");
@@ -64,18 +67,22 @@ namespace BimIshou
             tagDim.ToolTip = "Text thêm chữ 有効 vào phía trước đoạn Dimension được chọn.";
             tagDim.SetImage("/BimIshou;component/Resources/Icons/TextDim16.png");
             tagDim.SetLargeImage("/BimIshou;component/Resources/Icons/TextDim32.png");
+            tagDim.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
 
             var Tag防 = panel2.AddPushButton<Tag防>("Tag 防");
             Tag防.ToolTip = "Tag các cửa đặc biệt.";
             Tag防.SetImage("/BimIshou;component/Resources/Icons/Tag防16.png");
             Tag防.SetLargeImage("/BimIshou;component/Resources/Icons/Tag防32.png");
+            Tag防.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
 
             var floorSite = panel2.AddPushButton<FloorSite>("FloorSite");
             floorSite.ToolTip = "Tạo cao độ cho sàn theo các mốc cao độ.";
             floorSite.SetImage("/BimIshou;component/Resources/Icons/FloorSite16.png");
             floorSite.SetLargeImage("/BimIshou;component/Resources/Icons/FloorSite32.png");
+            floorSite.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
 
             var areas = panel2.AddSplitButton("Area", "Áp dụng cho bản diện tích");
+            areas.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
             var overrideArea = areas.AddPushButton<OverrideArea>("OverrideArea");
             overrideArea.ToolTip = "Chỉnh các nét chia Area.";
             overrideArea.SetImage("/BimIshou;component/Resources/Icons/Override16.png");
@@ -93,6 +100,7 @@ namespace BimIshou
             GridLevel.ToolTip = "Ẩn hiện Level và Grid";
             GridLevel.SetImage("/BimIshou;component/Resources/Icons/Levelandgrid16.png");
             GridLevel.SetLargeImage("/BimIshou;component/Resources/Icons/Levelandgrid32.png");
+            GridLevel.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
             var visibilityGridLevel = GridLevel.AddPushButton<VisibilityGridLevel>("Visibility\nGrid and Level");
             visibilityGridLevel.ToolTip = "Ẩn hiện bubble của grid và level.";
             visibilityGridLevel.SetImage("/BimIshou;component/Resources/Icons/VisibilityGridLevel16.png");
@@ -118,18 +126,22 @@ namespace BimIshou
             removeText.ToolTip = "Xóa các chữ A, B, C, D khi làm 展開図\n Nếu chọn view trong sheet thì sẽ đổi tên view về ビュー名";
             removeText.SetImage("/BimIshou;component/Resources/Icons/RemoveText16.png");
             removeText.SetLargeImage("/BimIshou;component/Resources/Icons/RemoveText32.png");
+            removeText.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
 
             var createRegion = panel2.AddPushButton<CreateRegion.CreateRegion>("Create Region");
             createRegion.ToolTip = "Auto Tag + Fill Region các phòng trình bày trong Sheet 展開図\nLưu ý: Cần phải có 1 mặt bằng trong sheet";
             createRegion.SetImage("/BimIshou;component/Resources/Icons/CreateRegion16.png");
             createRegion.SetLargeImage("/BimIshou;component/Resources/Icons/CreateRegion32.png");
+            createRegion.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
 
             var checkTagWall = panel2.AddPushButton<CheckTagWall.CheckTagWall>("Check Tag Wall");
             checkTagWall.ToolTip = "Kiểm tra xem có bao nhiêu loại tường đang được tag trong view.";
             checkTagWall.SetImage("/BimIshou;component/Resources/Icons/CheckWallTag16.png");
             checkTagWall.SetLargeImage("/BimIshou;component/Resources/Icons/CheckWallTag32.png");
+            checkTagWall.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
 
             var dimWallPanel = panel2.AddSplitButton("Dim Wall", "Dim Wall");
+            dimWallPanel.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
             var dimWall = dimWallPanel.AddPushButton<DimWall.DimWall>("Dim Wall A17");
             dimWall.ToolTip = "Dim Wall A17";
             dimWall.SetImage("/BimIshou;component/Resources/Icons/DimWall16.png");
@@ -144,6 +156,7 @@ namespace BimIshou
             checkoutStatus.ToolTip = "Kiểm tra xem ai đã sửa đối tượng.";
             checkoutStatus.SetImage("/BimIshou;component/Resources/Icons/CheckoutStatus16.png");
             checkoutStatus.SetLargeImage("/BimIshou;component/Resources/Icons/CheckoutStatus32.png");
+            checkoutStatus.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, pdfPath));
 
             #endregion
 

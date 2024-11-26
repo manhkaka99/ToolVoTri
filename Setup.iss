@@ -21,9 +21,9 @@ DefaultDirName={userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}
 DefaultGroupName={#MyAppName}
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\Admin\Desktop\New folder
+OutputDir=E:\C#\Setup
 OutputBaseFilename=BimIshou
-SetupIconFile=C:\Users\Admin\Desktop\New folder\setup.ico
+SetupIconFile=E:\C#\Setup\setup.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -32,15 +32,20 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
+;Help
+Source: "E:\C#\ToolVoTri\Huong dan ToolVoTri.pdf"; DestDir: "{userappdata}\Autodesk\Revit\Addins\BimIshouHelp"; Flags: ignoreversion
+
 ;2019
-Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\{#MyAppName}"; Flags: ignoreversion
+Source: "E:\C#\ToolVoTri\bin\Local 2021 Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\"; Flags: ignoreversion
+Source: "E:\C#\ToolVoTri\bin\Local 2021 Debug R21\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\{#MyAppName}"; Flags: ignoreversion
+
 ;2021
-Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2021 Debug R21\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
+Source: "E:\C#\ToolVoTri\bin\Local 2021 Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\"; Flags: ignoreversion
+Source: "E:\C#\ToolVoTri\bin\Local 2021 Debug R21\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2021\{#MyAppName}"; Flags: ignoreversion
+
 ;2024
-Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2024 Debug R24\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2024\"; Flags: ignoreversion
-Source: "C:\Users\Admin\Desktop\New folder\ToolVoTri\bin\Local 2024 Debug R24\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2024\{#MyAppName}"; Flags: ignoreversion
+Source: "E:\C#\ToolVoTri\bin\Local 2024 Debug R24\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2024\"; Flags: ignoreversion
+Source: "E:\C#\ToolVoTri\bin\Local 2024 Debug R24\BimIshou\*"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2024\{#MyAppName}"; Flags: ignoreversion
 
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
