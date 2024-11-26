@@ -33,7 +33,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 ;Help
-Source: "E:\C#\ToolVoTri\Huong dan ToolVoTri.pdf"; DestDir: "{userappdata}\Autodesk\Revit\Addins\BimIshouHelp"; Flags: ignoreversion
+Source: "E:\C#\ToolVoTri\ToolVoTri.pdf"; DestDir: "{userappdata}\Autodesk\Revit\Addins\BimIshouHelp"; Flags: ignoreversion
 
 ;2019
 Source: "E:\C#\ToolVoTri\bin\Local 2021 Debug R21\BimIshou.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2019\"; Flags: ignoreversion
