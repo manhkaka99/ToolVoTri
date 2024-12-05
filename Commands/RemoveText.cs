@@ -35,12 +35,12 @@ namespace BimIshou.Commands
             {
                 ElementId viewId;
                 Element check = doc.GetElement(elementId);
-                if (check.Category.Name == "Viewports")
+                if (check.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Viewports)
                 {
                     viewId = (check as Viewport).ViewId;
                     viewPort.Add(check);
                 }
-                else if (check.Category.Name == "Views")
+                else if (check.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Views)
                 {
                     viewId = (check as View).Id;
                 }

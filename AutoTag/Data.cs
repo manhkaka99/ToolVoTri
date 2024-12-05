@@ -46,9 +46,8 @@ namespace BimIshou.Data
         {
             try
             {
-
                 List<RoomTagType> result = new FilteredElementCollector(doc).OfClass(typeof(FamilySymbol))
-                        .Where(p => (p as FamilySymbol).Category.Name == "Room Tags").Cast<RoomTagType>().ToList();
+                        .Where(p => (p as FamilySymbol).Category.Id.IntegerValue == (int)BuiltInCategory.OST_RoomTags).Cast<RoomTagType>().ToList();
                 return result;
             }
             catch (System.Exception e)
@@ -75,7 +74,7 @@ namespace BimIshou.Data
     {
         public bool AllowElement(Element elem)
         {
-            if (elem.Category.Name == "Detail Items"|| elem.Category.Name == "Levels")
+            if (elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_DetailComponents || elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Levels)
                 return true;
             else return false;
         }

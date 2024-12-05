@@ -76,7 +76,8 @@ namespace BimIshou.Commands
             IList<Element> list3 = new List<Element>(); //List cao do khac 0
             foreach (Element element in sites)
             {
-                String a = element.LookupParameter("Family").AsValueString();
+                
+                String a = (element as FamilyInstance).Symbol.FamilyName;
 
                 if (a == "d外構_レベル標_隅" || a == "d外構_レベル標_中心")
                 {

@@ -53,7 +53,9 @@ namespace BimIshou.Commands
     {
         public bool AllowElement(Element elem)
         {
-            if (elem.Category.Name == "Generic Models" || elem.Category.Name == "Structural Framing"|| elem.Category.Name == "Structural Columns")
+            if (elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_GenericModel 
+                || elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_StructuralFraming 
+                || elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_StructuralColumns)
                 return true;
             else return false;
         }

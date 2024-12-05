@@ -208,7 +208,7 @@ namespace BimIshou.PointFloorSite
     {
         public bool AllowElement(Element elem)
         {
-            return elem.Category.Name.Equals("Floors");
+            return elem.Category != null && elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Floors;
         }
 
         public bool AllowReference(Reference reference, XYZ position)

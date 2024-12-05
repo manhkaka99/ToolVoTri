@@ -91,7 +91,7 @@ namespace BimIshou.Commands
     {
         public bool AllowElement(Element elem)
         {
-            return elem.Category.Name.Equals("Dimensions");
+            return elem.Category != null && elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Dimensions;
         }
 
         public bool AllowReference(Reference reference, XYZ position)

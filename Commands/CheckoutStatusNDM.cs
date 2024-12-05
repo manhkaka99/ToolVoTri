@@ -6,7 +6,7 @@ using Autodesk.Revit.UI.Selection;
 
 namespace BimIshou.Commands
 {
-    [TransactionAttribute(TransactionMode.ReadOnly)]
+    [Transaction(TransactionMode.Manual)]
     public class CheckoutStatusNDM : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)

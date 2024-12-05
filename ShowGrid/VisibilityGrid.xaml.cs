@@ -207,7 +207,7 @@ namespace BimIshou.ShowGrid
             foreach (Reference re in list)
             {
                 Element ele = doc.GetElement(re);
-                if (ele.Category.Name.Equals("Grids"))
+                if (ele.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Grids)
                 {
                     grids.Add(ele);
                 }
@@ -581,7 +581,7 @@ namespace BimIshou.ShowGrid
         {
             public bool AllowElement(Element elem)
             {
-                return (elem.Category.Name.Equals("Grids") || elem.Category.Name.Equals("Levels"));
+                return (elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Grids || elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Levels);
             }
             public bool AllowReference(Reference reference, XYZ position)
             {

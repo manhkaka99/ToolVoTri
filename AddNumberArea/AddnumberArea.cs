@@ -71,7 +71,7 @@ namespace BimIshou.AddNumberArea
     {
         public bool AllowElement(Element elem)
         {
-            return elem.Category.Name.Equals("Areas");
+            return elem.Category.Id.IntegerValue == (int)BuiltInCategory.OST_Areas;
         }
 
         public bool AllowReference(Reference reference, XYZ position)
